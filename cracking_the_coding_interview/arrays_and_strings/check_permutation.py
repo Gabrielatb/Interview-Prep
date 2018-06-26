@@ -1,3 +1,4 @@
+###QUESTION 1.2###
 # Given two strings, write a method to decide if one is a permutation of the other
 
 #approach: creat dictionary for each string with key being letter, value be how many
