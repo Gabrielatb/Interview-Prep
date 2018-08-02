@@ -1,13 +1,6 @@
 ###3.4####
 #Implement a MyQueue Class which implements a queue using two stacks
 
-
-#approach: going to get both queues creates nodes from them and
-
-#s1 = []
-#s2 = [10]
-
-#queue = [9,10]
 class MyQueue(object):
 
     def __init__(self):
@@ -63,7 +56,6 @@ class MyQueue(object):
 
 
 
-
 if __name__ == "__main__":
     obj = MyQueue()
     obj.push(1)
@@ -74,3 +66,5 @@ if __name__ == "__main__":
     obj.push(6)
     obj.push(7)
     obj.push(8)
+
+

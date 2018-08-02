@@ -1,7 +1,7 @@
 # Linked list with Node/LinkedList classes
 
 
-class Node(object):
+class ListNode(object):
     """Node in a linked list."""
 
     def __init__(self, data):
