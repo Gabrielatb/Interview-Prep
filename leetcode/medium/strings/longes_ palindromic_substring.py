@@ -12,37 +12,71 @@
 # Output: "bb"
 
 
-def longest_palindrome(s):
-    reverse_string = reverse(s)
-    print s
-    print reverse_string
+# def longest_palindrome(s):
+
+#     if s == '':
+#         return ''
 
 
-    pal = ''
-
-    for i in range(len(s)):
-        # print s[i], reverse_string[i]
-        if s[i] == reverse_string[i]:
-            pal = pal + s[i]
-
-    if pal == '':
-        return None
-    return pal
+#     reverse_string = reverse(s)
+#     print s
+#     print reverse_string
 
 
+#     pal = ''
+
+#     for i in range(len(s)):
+#         # print s[i], reverse_string[i]
+#         if s[i] == reverse_string[i]:
+#             pal = pal + s[i]
+
+#     if pal == '':
+#         return None
+#     return pal
 
 
-def reverse(s):
-    lst = list(s)
-    length = len(lst)
 
-    for i in range(length/2):
-        temp = lst[i]
-        lst[i] = lst[-(i+1)]
-        lst[-(i+1)] = temp
+
+# def reverse(s):
+#     lst = list(s)
+#     length = len(lst)
+
+#     for i in range(length/2):
+#         temp = lst[i]
+#         lst[i] = lst[-(i+1)]
+#         lst[-(i+1)] = temp
     
-    final = ''.join(lst)
-    return final
+#     final = ''.join(lst)
+#     return final
+
+
+def longest_palindrome(s):
+    """
+    :type s: str
+    :rtype: str
+    """
+    for i in reversed(range(len(s))):
+        for start in range(len(s)-i):
+            substring = s[start: start + i + 1]
+            
+            if substring == substring[::-1]:
+                return substring
 
 #dbbc
-print(longest_palindrome('cbzd'))
+print(longest_palindrome('babad'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
