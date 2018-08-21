@@ -8,58 +8,49 @@
 
 
 class LRUCache(object):
-
     def __init__(self, capacity):
-        """
-        :type capacity: int
-        """
-        self.capacity = capacity 
-        self.queue = []
+        self.capacity = capacity
+        self.cache = {}
+        self.q = []
+        self.timestamp = 0
 
     def get(self, key):
-        """
-        :type key: int
-        :rtype: int
-        """
-        
-        if len(self.queue) == 0:
+        if key not in self.cache:
             return -1
-
-        for tup in self.queue:
-            if tup[0] == key:
-                temp = self.queue[-1]
-                self.queue[-1] = self.queue[0]
-                self.queue[0] = temp
-                return self.queue[-1][1]
-        return -1
+            
+        item = self.cache[key]
+        item[1] = self.timestamp
+        self.q.append((self.timestamp, key))
+        
+        self.timestamp += 1
+        
+        return item[0]
         
 
     def put(self, key, value):
-        """
-        :type key: int
-        :type value: int
-        :rtype: void
-        """
+        
+        if key not in self.cache and len(self.cache) >= self.capacity:
+            while True:
+                t, k = self.q.pop(0)
+                if self.cache[k][1] == t:
+                    break
+            self.cache.pop(k)
+                
+        self.cache[key] = [value, self.timestamp]
+        self.q.append((self.timestamp, key))        
+            
+        self.timestamp += 1
 
-        if len(self.queue) == 0:
-            self.queue.append((key, value))
-        
-        for indx, tup in enumerate(self.queue):
-            if tup[0] == key:
-                self.queue[indx] = (key, value)
-                return
-        
-        if len(self.queue) == self.capacity:
-            self.queue.pop(0)
-        self.queue.append((key, value))
 
 
 if __name__ == '__main__':
     cache = LRUCache(2)
-    cache.put(2,1)
-    cache.put(2,2)
-    # cacheget(1)
-    # cache.put(3,3)
+    # cache.put(2,1)
+    # cache.put(2,2)
+    # cache.get(2)
+    # cache.put(1,1)
+    # cache.put(4,1)
+    # cache.get(2)
 
 
 
