@@ -23,69 +23,46 @@
 # Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
 #              is 5 but its right child's value is 4.
 
-class BinarySearchNode(object):
-    """Binary tree node."""
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-    def __init__(self, key, left=None, right=None):
-        self.val = key
-
-        self.left = left
-        self.right = right
-
-    def __repr__(self):
-        """Debugging-friendly representation."""
-
-        return "<BinaryNode %s>" % self.val
-    # def isValidBST(self):
-    #     """
-    #     :type root: TreeNode
-    #     :rtype: bool
-    #     """
-        # stack = []
-        # if self is None:
-        #     return True
-        # elif root.left:
-        #     left = self.left
-        #     left.isValidBST()
-        # if root not in stack:
-        #     stack.append(root)
-        # if root.right:
-        #     right = root.right
-        #     right.isValidBST()
-        # for i in range(len(stack) - 1):
-        #     if stack[i] > stack[i+1]:
-        #         return False 
-        #     return True
- 
-    def helper(self, root, validate_list):
+class Solution(object):
+    def inOrderTraversal(self, root, nums):
         if root is None:
             return None
         if root.left:
             left = root.left
-            # print "this is left" + str(left)
-            left.helper(left, validate_list)
-        validate_list.append(root.val)
-        # print validate_list   
+            self.inOrderTraversal(left, nums)
+        nums.append(root.val)
         if root.right:
             right = root.right
-            # print "this is right" + str(right)
-            right.helper(right, validate_list)
-    def check_BST(self, root):
+            self.inOrderTraversal(right, nums)
+            
+    def isValidBST(self, root):
         """
         :type root: TreeNode
         :rtype: bool
         """
-        validate_list = []
-        root.helper(root, validate_list)
-        # print "finishing off in the inorder function"
-        print validate_list
-        for i in range(len(validate_list)-1):
-            print validate_list[i], validate_list[i+1]
-            if validate_list[i] >= validate_list[i+1]:
+        #edge cases if root is none return none
+        
+        
+        #recursive solution
+        
+        nums = []
+        
+        self.inOrderTraversal(root, nums)
+        
+        for i in range(len(nums)-1):
+            if nums[i] >= nums[i+1]:
                 return False
         return True
-
-
+        
+        
+        
 
 
 
