@@ -47,35 +47,93 @@ class LinkList(object):
                 print curr.val
                 curr = curr.next
 
-    def mergeKLists(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
+    # def mergeKLists(self, lists):
+    #     """
+    #     :type lists: List[ListNode]
+    #     :rtype: ListNode
+    #     """
 
         #### BRUTE FORCE SOLUTION ####
-        nums = []
+        #Time complexity is NlognN because of sort
+        #N or iterating through the entire list
+        #N log N for sorting the list
+        #N for creating new linked list
 
-        for ll in lists:
-            curr = ll.head
+        #Space Complexity O(N) creating empty list
+        #Sorting cost N
+        #creating new linked list N
+        # nums = []
 
-            while curr:
-                nums.append(curr.val)
-                curr = curr.next
+        # for ll in lists:
+        #     curr = ll.head
 
-        nums.sort()
-        dummy = dummy_head = Node(0)
-        for num in nums:
-            # print num
-            dummy.next = Node(num)
-            dummy = dummy.next
+        #     while curr:
+        #         nums.append(curr.val)
+        #         curr = curr.next
+
+        # nums.sort()
+        # dummy = dummy_head = Node(0)
+        # for num in nums:
+        #     # print num
+        #     dummy.next = Node(num)
+        #     dummy = dummy.next
 
 
-        return dummy_head.next
+        # return dummy_head.next
+
+        #########Cleaner Solution################
+
+    ###Time Complexity: Nlogk where n is number of nodes in k link list
+    ###Space complexity O(1)
+        def mergeKLists(self, lst):
+            """
+            :type lists: List[ListNode]
+            :rtype: ListNode
+            """
+
+            length = len(lst)
+
+            interval = 1
+
+            while interval < length:
+                for i in range(0, length-interval, interval*2):
+                    lst[i] = self.merge2Lists(lst[i], lst[i+interval])
+
+                interval *= 2
+
+            return lst[0] if length > 0 else lst
+
+
+        def Merge2Lists(self, l1, l2):
+
+            dummy = dummy_head = Node(0)
+
+            while l1 and l2:
+                if l1.val >l2.val:
+                    dummy.next = l2
+                    l2 = l2.next
+                    dummy = dummy.next
+
+                elif l2.val >= l1.val:
+                    dummy.next = l1
+                    l1 = l1.next
+                    dummy = dummy.next
+
+            if l1:
+                dummy.next = l1
+
+            if l2:
+                dummy.next = l2
+            return dummy_head.next
+
+      
 
 
 
-            
+
+
+
+
 
 
 
