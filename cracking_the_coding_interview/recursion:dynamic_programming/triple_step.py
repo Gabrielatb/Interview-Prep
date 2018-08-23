@@ -7,25 +7,25 @@
 #make more efficient 
 
 
-###With memoiozation####
-def count_steps(n, memo):
+###With memoization####
+# def count_steps(n, memo):
 
-    if n in memo:
-        return memo[n]
+#     if n in memo:
+#         return memo[n]
 
-    else:
-        memo[n] = count_steps(n-1, memo) + count_steps(n-2, memo) + count_steps(n-3, memo)
-        return memo[n]
-
-
-def climb_stairs(n):
-    memo = {}
-    memo[1] = 1
-    memo[2] = 2
-    memo[3] = 3
-    return count_steps(n, memo)
+#     else:
+#         memo[n] = count_steps(n-1, memo) + count_steps(n-2, memo) + count_steps(n-3, memo)
+#         return memo[n]
 
 
+# def climb_stairs(n):
+#     memo = {}
+#     memo[1] = 1
+#     memo[2] = 2
+#     memo[3] = 3
+#     return count_steps(n, memo)
+
+#####Without saving values###########
 
 # def count_steps(n, memo):
 
@@ -47,6 +47,28 @@ def climb_stairs(n):
 
 
 
+#################################################################################
+
+
+#alternative problem, consider we can only take 1, 3, 5 steps represented in a set (1,3,5)
+
+
+def count(n, steps, memo):
+
+    if n == 0:
+        return 1
+
+    total = 0
+
+    for i in steps:
+
+        if n-1 >=0:
+
+            total+= count(n-i, steps)
+
+
+
+    return total
 
 
 
@@ -66,23 +88,4 @@ def climb_stairs(n):
 
 
 
-# def countWays(self, n, memo):
-
-#     if n in memo:
-#         return memo[n]
-
-#     else:
-#         steps = self.countWays(n-1, memo) + self.countWays(n-2, memo) + self.countWays(n-3, memo)
-#         memo[n] = steps
-#         return steps
-
-
-
-# def climbStairs(self, n):
-
-#     memo = {}
-#     memo[1] = 1
-#     memo[2] = 2
-#     memo[3] = 3
-#     return self.countWays(n, memo)
 

@@ -4,7 +4,7 @@
 #Write a method which computers all permutations of a string of unique char
 
 
-
+#run time )(n**2 * n!)
 
 def permutation(word):
 
