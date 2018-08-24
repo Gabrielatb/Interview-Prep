@@ -46,35 +46,6 @@
 
 
 
-9 of 12,521
-Solutions for 8/22 study session.
-Inbox
-x
-
-Romain Komorn
-Attachments
-Wed, Aug 22, 7:56 PM (13 hours ago)
-to ksahoo.sanju, me
-
-Here are the solutions!
-
-2 Attachments
-
-invalid = [
-    [True, False, False, True, False, True],
-    [True, True, False, True, True, True],
-    [True, False, False, True, True, True],
-    [True, False, True, True, True, True],
-    [True, False, True, True, True, True],
-]
-
-valid = [
-    [True, False, False, True, True, True],
-    [True, True, True, False, True, True],
-    [True, False, True, False, True, True],
-    [True, False, True, True, False, True],
-    [False, False, False, True, True, True],
-]
 
 
 # def get_path(maze, row=None, col=None):
