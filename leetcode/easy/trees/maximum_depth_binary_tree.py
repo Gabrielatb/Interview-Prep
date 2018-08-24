@@ -21,6 +21,8 @@
 #         self.left = None
 #         self.right = None
 
+#Iterative Solution
+
 class Solution(object):
     def maxDepth(self, root):
         """
@@ -41,3 +43,25 @@ class Solution(object):
                     if node.right is not None:
                         queue.append(node.right)
         return count
+
+#Recursive Solution
+#################################################################################
+
+class Solution(object):    
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if root is None:
+            return 0
+        
+        
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+        
+        return max(left, right) + 1
+    
+
+
+

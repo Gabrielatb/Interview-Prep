@@ -26,6 +26,8 @@
 #   / \
 #  4   4
 
+#O(n) worst case scenario you would have to visit each node
+
 class Solution(object):
     def return_height(self, root):
         print "inside the correct function"
