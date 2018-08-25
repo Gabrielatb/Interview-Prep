@@ -23,6 +23,8 @@
 
 #Iterative Solution
 
+#O(n) needs to traverse all nodes to find max depth 
+
 class Solution(object):
     def maxDepth(self, root):
         """

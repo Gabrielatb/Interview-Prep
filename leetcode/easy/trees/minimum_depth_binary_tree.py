@@ -34,7 +34,34 @@ class BinarySearchNode(object):
         :type root: TreeNode
         :rtype: int
         """
+
+    #Time complexity O(n), worst case scenario traverse entire tree
+
+
+
+
         #iterative solution
+ ################################################################################ 
+
+
+
+        # count = 0
+        # if root is not None:
+        #     queue = [root]
+        #     while queue:
+        #         count +=1 
+        #         for _ in range(len(queue)):
+        #             node = queue.pop(0)
+        #             if node.left is None and node.right is None:
+        #                 return count
+        #             if node.left:
+        #                 queue.append(node.left)
+        #             if node.right:
+        #                 queue.append(node.right)
+        
+        # return count
+              
+            #alternative iterative solution
         # if self is None:
         #     return -1
 
@@ -63,6 +90,21 @@ class BinarySearchNode(object):
         if root.right is None:
             return self.minDepth(root.left) + 1
         return min(self.minDepth(root.right), self.minDepth(root.left)) + 1
+
+
+
+        #alternate recursive solution
+        if root is None:
+            return 0
+        
+        left = self.minDepth(root.left) 
+        right = self.minDepth(root.right)
+        
+        if root.left is None or root.right is None:
+            return max(left, right) + 1
+        
+        return min(left, right) + 1
+
 
 
 
