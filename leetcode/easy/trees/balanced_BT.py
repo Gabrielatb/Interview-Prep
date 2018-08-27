@@ -26,38 +26,49 @@
 #   / \
 #  4   4
 
+
+
+
+
+
+
+
+
+
+
+################################################################################
 #O(n) worst case scenario you would have to visit each node
 
-class Solution(object):
-    def return_height(self, root):
-        print "inside the correct function"
+# class Solution(object):
+#     def return_height(self, root):
+#         print "inside the correct function"
         
-        if root is None:
-            return 0
+#         if root is None:
+#             return 0
         
-        left = self.return_height(root.left)
-        right = self.return_height(root.right)
+#         left = self.return_height(root.left)
+#         right = self.return_height(root.right)
         
-        if left == -1 or right == -1:
-            print "inside -1"
-            return -1
-        if abs(left-right) >1:
-            print 'inside -1'
-            return -1
+#         if left == -1 or right == -1:
+#             print "inside -1"
+#             return -1
+#         if abs(left-right) >1:
+#             print 'inside -1'
+#             return -1
         
-        return max(left, right) + 1
+#         return max(left, right) + 1
     
-    def isBalanced(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-        if root is None:
-            return True
+#     def isBalanced(self, root):
+#         """
+#         :type root: TreeNode
+#         :rtype: bool
+#         """
+#         if root is None:
+#             return True
        
-        if self.return_height(root) == -1:
-            return False
-        return True
+#         if self.return_height(root) == -1:
+#             return False
+#         return True
 
 
 
