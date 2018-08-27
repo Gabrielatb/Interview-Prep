@@ -26,57 +26,73 @@
 #   / \
 #  4   4
 
+#Time Complexity: O(n)
+#worse case scenario you traverse all nodes
+
+#Space Complexity: O(h)
+#height of tree
+class BST(object):
+    def __init__(self, data, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
+
+
+    def height(self, root):
+        """
+        >>> three.is_balanced(three)
+        True
+
+        >>> one.is_balanced(one)
+        False
+
+        """
+
+        if root is None:
+            return 0
+
+        left = self.height(root.left)
+        right = self.height(root.right)
+
+
+        if left == -1 or right == -2 or abs(left-right) > 1:
+            return -1
+
+        return max(left, right) + 1
+
+
+    def is_balanced(self, root):
+
+        height = self.height(root)
+        # print height
+
+        if height == -1:
+            return False
+
+        return True
 
 
 
+    # Create sample tree and search for nodes in it
+if __name__ == '__main__':
+    fifteen = BST(15)
+    seven = BST(7)
+    nine = BST(9)
+    twenty = BST(20, fifteen, seven)
+    three = BST(3, nine, twenty)
 
 
 
+    four_1 = BST(4)
+    four_2 = BST(4)
+    three_1 = BST(3, four_1, four_2)
+    three_2 = BST(3)
+    two_1 = BST(2, three_1, three_2)
+    two_2 = BST(2)
+    one = BST(1, two_1, two_2)
+
+    import doctest
+    if doctest.testmod().failed == 0:
+        print "*****Solution Correct!******"
 
 
-
-
-################################################################################
-#O(n) worst case scenario you would have to visit each node
-
-# class Solution(object):
-#     def return_height(self, root):
-#         print "inside the correct function"
-        
-#         if root is None:
-#             return 0
-        
-#         left = self.return_height(root.left)
-#         right = self.return_height(root.right)
-        
-#         if left == -1 or right == -1:
-#             print "inside -1"
-#             return -1
-#         if abs(left-right) >1:
-#             print 'inside -1'
-#             return -1
-        
-#         return max(left, right) + 1
-    
-#     def isBalanced(self, root):
-#         """
-#         :type root: TreeNode
-#         :rtype: bool
-#         """
-#         if root is None:
-#             return True
-       
-#         if self.return_height(root) == -1:
-#             return False
-#         return True
-
-
-
-# if __name__ == '__main__':
-#     # Create sample tree and search for nodes in it
-#     five_three = BinarySearchNode(1)
-#     one_two = BinarySearchNode(1)
-#     one = BinarySearchNode(1)
-#     five_two = BinarySearchNode(5, None, five_three)
-#     four = BinarySearchNode(4, one, one_two)
-#     five = BinarySearchNode(5, four, five_two)

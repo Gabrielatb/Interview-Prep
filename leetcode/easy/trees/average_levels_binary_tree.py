@@ -71,28 +71,7 @@ if __name__ == '__main__':
     three = BST(3, nine, twenty)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+################################################################################
 
 # Definition for a binary tree node.
 # class TreeNode(object):
