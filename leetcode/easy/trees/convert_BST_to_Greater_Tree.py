@@ -1,47 +1,69 @@
-# Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.
+# Given a Binary Search Tree (BST), convert it to a Greater Tree such that every
+#key of the original BST is changed to the original key plus sum of all keys greater
+# than the original key in BST.
 
 # Example:
 
-# Input: The root of a Binary Search Tree like this:
+# Input: The curr of a Binary Search Tree like this:
 #               5
 #             /   \
 #            2     13
 
-# Output: The root of a Greater Tree like this:
+# Output: The curr of a Greater Tree like this:
 #              18
 #             /   \
 #           20     13
 
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
 
-class Solution(object):
-    def convertBST(self, root):
+
+#Time Complexity O(n)
+#Space Complexity O(h)
+
+class BST(object):
+    def __init__(self, data, left=None, right=None):
+        self.val = data
+        self.left = left
+        self.right = right
+
+
+        #reverse inorder traversal 
+
+    def greater_tree(self, root):
         """
-        :type root: TreeNode
-        :rtype: TreeNode
+        >>> five.greater_tree(five)
+        18
         """
-    
-        #reverse in order traversal  
-        #I visit each node once and must keep track of the nodes I previously visited which are greater
-        #than the node I'm on and add them to make the new total of the node I am on
-        
+
         stack = []
-        node = root
+        curr = root
         total = 0
-        
-        while len(stack) != 0 or node is not None:
-            while node is not None:
-                stack.append(node)
-                node = node.right
-                
-            node = stack.pop()
-            total += node.val
-            node.val = total
-            node = node.left
-            
-        return root
+
+        while stack or curr:
+            while curr:
+                stack.append(curr)
+                curr = curr.right
+
+            curr = stack.pop()
+            total += curr.val
+            curr.val = total
+            curr = curr.left
+
+        return root.val
+
+
+if __name__ == '__main__':
+    two = BST(2)
+    thirteen = BST(13)
+    five = BST(5, two, thirteen)
+
+    import doctest
+    if doctest.testmod().failed == 0:
+        print '***Solution Passed***'
+
+
+
+
+
+
+
+
