@@ -5,7 +5,7 @@ class Node(object):
         self.data = data
         self.next=None
 
-class LinkList(object):
+class LinkedList(object):
     def __init__(self):
         self.head = None
         self.tail = None
@@ -24,6 +24,54 @@ class LinkList(object):
 
         self.tail = new_node
 
+    def print_list(self):
+        if self.head is None:
+            print "No nodes to print"
+
+        curr = self.head 
+
+        while curr:
+            print curr.data
+            curr = curr.next
+
+    #O(n) Space complexity because of List
+    #O(n) Time complexity each node is visited
+
+    def remove_dups(self):
+        if self.head is None:
+            print "No nodes"
+
+        #O(1) space complexity
+        #optimal solution
+        curr = self.head
+
+        while curr.next:
+            if curr.data == curr.next.data:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+
+        return ll.print_list()
+
+        # seen = []
+        # curr = self.head
+        # dummy = dummy_head = Node(0)
+
+        # while curr:
+        #     if curr.data not in seen:
+        #         seen.append(curr.data)
+        #         dummy.next = curr
+        #         dummy = dummy.next
+
+        #     else:
+        #         dummy.next = None
+
+
+        #     curr = curr.next
+
+
+        # return ll.print_list()
+
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -33,7 +81,7 @@ if __name__ == '__main__':
     two_2 = ll.append(2)
     two_3 = ll.append(2)
     three = ll.append(3)
-    four =ll.append(4)
+    four = ll.append(4)
     five = ll.append(5)
     five_2 = ll.append(5)
     five_3 = ll.append(5)
