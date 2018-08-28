@@ -2,33 +2,112 @@
 #come before all nodes greater than or equal to the value
 
 
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode(object):
+    def __init__(self, data):
+        self.val = data
+        self.next = None
 
-class Solution(object):
-    def partition(self, head, x):
-        """
-        :type head: ListNode
-        :type x: int
-        :rtype: ListNode
-        """
-        
-        h1 = l1 = ListNode(0)
-        h2 = l2 = ListNode(0)
-        curr = head
-        
+class LinkedList(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+
+    def append(self, data):
+        new_node = ListNode(data)
+
+        if self.head is None:
+            self.head = new_node
+
+        else:
+            curr = self.head
+            while curr.next:
+                curr = curr.next
+
+            curr.next = new_node
+        self.tail = new_node
+
+#1 -> 5 -> 9 -> 2 -> 7 -> 3 -> None
+    def print_list(self):
+        curr = self.head
+
         while curr:
-            if curr.val < x:
-                l1.next = curr
-                l1 = l1.next
-            else:
-                l2.next = curr
-                l2 = l2.next
+            print curr.val
             curr = curr.next
-            
-        l2.next = None
-        l1.next = h2.next
-        return h1.next
+
+
+    def partition(self, x):
+
+        #O(n) time complexity
+        #O(1) space complexity
+    
+        curr = self.head
+        dummy_head = head= ListNode(0)
+        dummy_end = head_end = ListNode(0)
+
+        while curr:
+            if curr.val  < x:
+                dummy_head.next = curr
+                dummy_head = dummy_head.next
+            else:
+                dummy_end.next = curr
+                dummy_end = dummy_end.next
+
+            curr = curr.next
+
+        dummy_end.next = None
+        print dummy_head.val
+        print head_end.next.val
+
+        dummy_head.next = head_end.next
+        self.head = head.next
+        self.tail = dummy_end
+        return head.next.val
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    # ll = LinkedList()
+    # ll.append(1)
+    # ll.append(5) 
+    # ll.append(9) 
+    # ll.append(2) 
+    # ll.append(7) 
+    # ll.append(3)  
+
+    ll2 = LinkedList()
+    ll2.append(2)
+    ll2.append(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
