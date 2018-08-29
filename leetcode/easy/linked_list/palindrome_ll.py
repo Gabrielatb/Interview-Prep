@@ -71,24 +71,7 @@ class LinkedList(object):
             curr = curr.next
         return True
 
-
-
-if __name__ == "__main__":
-    ll = LinkedList()
-    ll.append(1)
-    ll.append(2)
-    ll.append(2)
-    ll.append(1)
-
-
-
-
-
-    # def isPalindrome(self, head):
-    #     """
-    #     :type head: ListNode
-    #     :rtype: bool
-        # """
+        
         #O(n) space complexity
         #O(n) time complexity
         
@@ -107,4 +90,17 @@ if __name__ == "__main__":
         #     curr = curr.next
             
         # return True
+
+
+
+
+if __name__ == "__main__":
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(2)
+    ll.append(2)
+    ll.append(1)
+
+
+
 
