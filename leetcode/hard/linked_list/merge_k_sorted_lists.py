@@ -85,48 +85,52 @@ class LinkList(object):
 
     ###Time Complexity: Nlogk where n is number of nodes in k link list
     ###Space complexity O(1)
-        def mergeKLists(self, lst):
-            """
-            :type lists: List[ListNode]
-            :rtype: ListNode
-            """
-
-            length = len(lst)
-
-            interval = 1
-
-            while interval < length:
-                for i in range(0, length-interval, interval*2):
-                    lst[i] = self.merge2Lists(lst[i], lst[i+interval])
-
-                interval *= 2
-
-            return lst[0] if length > 0 else lst
-
-
-        def Merge2Lists(self, l1, l2):
-
-            dummy = dummy_head = Node(0)
-
-            while l1 and l2:
-                if l1.val >l2.val:
-                    dummy.next = l2
-                    l2 = l2.next
-                    dummy = dummy.next
-
-                elif l2.val >= l1.val:
-                    dummy.next = l1
-                    l1 = l1.next
-                    dummy = dummy.next
-
-            if l1:
-                dummy.next = l1
-
-            if l2:
-                dummy.next = l2
-            return dummy_head.next
-
-      
+    def merge(self, ll1, ll2):
+        dummy = dummy_head = ListNode(0)
+        
+        while ll1 and ll2:
+            if ll1.val > ll2.val:
+                dummy.next = ll2
+                dummy = dummy.next
+                ll2 = ll2.next
+            else:
+                dummy.next = ll1
+                dummy = dummy.next
+                ll1 = ll1.next
+        
+        if ll1:
+            dummy.next = ll1
+        if ll2:
+            dummy.next = ll2
+            
+        return dummy_head.next
+    
+    
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        if len(lists) == 0:
+            return None
+        
+        if len(lists) == 1:
+            for ll in lists:
+                return ll
+            
+        mid = len(lists)/2
+        
+        left = self.mergeKLists(lists[:mid])
+        right = self.mergeKLists(lists[mid:])
+        
+        
+            
+            
+        return self.merge(left, right)
+        
+        
+        
+        
 
 
 
@@ -179,64 +183,3 @@ if __name__ == '__main__':
 
 
 
-# class Solution(object):
-#     def mergeKLists(self, lists):
-#         """
-#         :type lists: List[ListNode]
-#         :rtype: ListNode
-#         """
-#     #***riginal solution***
-
-#     if len(lists) == 0:
-#         return None
-    
-#     nums = []
-    
-#     #iterating through list, grabbing single linked list, iterate through that link list, and putting it onto my newly created list
-    
-#     for ll in lists:
-#         #have single link list, will iterate through it
-#         curr = ll
-#         while curr:
-#             nums.append(curr.val)
-#             curr = curr.next
-        
-            
-#     sorted_nums = sorted(nums)
-    
-#     if len(sorted_nums) == 0:
-#         return None
-        
-#         #making a dummy head
-#         dummy = ListNode(nums)
-#         #linking first element in sorted_nums to dummynode
-#         curr =  ListNode(sorted_nums[0])
-#         dummy.next = curr
-        
-#         for i in range(len(sorted_nums)):
-#             if i == 0:
-#                 continue
-#             else:
-#                 node = ListNode(sorted_nums[i])
-#                 curr.next = node
-#                 curr = node
-                
-#         return dummy.next
-
-#     #***alternate, cleaner solution***
-#         nums = []
-
-#         for head in lists:
-#             current = head
-#             while current:
-#                 nums.append(current.val)
-#                 current = current.next
-
-#         sorted_list = sorted(nums)
-#         head = ListNode(0)
-#         current = head
-#         for num in sorted_list:
-#             current.next = ListNode(num)
-#             current = current.next
-
-#         return head.next
