@@ -1,10 +1,18 @@
 #Problem 2.6
 
-class ListNode(object):
 
+#2 -> 4 ->5 ->4 ->2 ---> return True
+
+# 1-> 2 -> 3 ----> return False
+
+# 1 ----> return True
+
+
+class ListNode(object):
     def __init__(self, data):
         self.val = data
         self.next = None
+
 
 class LinkedList(object):
     def __init__(self):
@@ -12,63 +20,120 @@ class LinkedList(object):
         self.tail = None
 
     def append(self, data):
-
         new_node = ListNode(data)
 
         if self.head is None:
             self.head = new_node
-        elif self.tail is not None:
-            self.tail.next = new_node
-        self.tail = new_node
+
+        else:
+            curr = self.head
+            while curr.next:
+                curr = curr.next
+            curr.next = new_node
+        new_node = self.tail
+
+
 
     def print_list(self):
+        if self.head is None:
+            return 'No nodes to print'
 
         curr = self.head
         while curr:
-            print curr.val
+            print curr.data
             curr = curr.next
 
+    
     def palindrome(self):
-      
-        if not self.head or not self.head.next:
-            return None
+
+        #Time Complexity O(n)
+
+        #Space Complexity O(1)
+
+        #find middle node reverse second half of link list
+
+        # if self.head is None or self.head.next is None:
+        #     return True
+
+        # #find middle node
+        # slow = fast = self.head
+        # while fast.next and fast.next.next:
+        #     slow = slow.next
+        #     fast = fast.next.next
+
+        # #reverse link list
+        # prev = node
+        # while slow:
+        #     temp = slow.next
+        #     slow.next = prev
+        #     prev = slow
+        #     slow = temp
+
+        # #compare first and second half
+        # while prev and self.head:
+        #     if prev.val != self.head.val:
+        #         return False
+        #     prev = prev.next
+        #     self.head = self.head.next
+
+        # return True
 
 
-        node_count = 0
+
+        #creating a stack
+
         curr = self.head
+        stack = []
 
         while curr:
-            node_count +=1
-            curr = curr.next
-            
-        curr = self.head
-        prev = None
-        for _ in range(node_count/2):
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-            
-        
-        if node_count % 2 !=0:
+            stack.append(curr)
             curr = curr.next
 
-
-        while prev:
-            if prev.val == curr.val:
-                curr = curr.next
-                prev = prev.next
-            else:
+        curr = head
+        while curr:
+            node = stack.pop() 
+            if node.val != curr.val:
                 return False
+            curr = curr.next
 
         return True
+
+        #Time Complexity O(n)
+        #Space Complexity O(n)
+
+
 
 
 
 if __name__ == "__main__":
     ll = LinkedList()
     ll.append(1)
-    ll.append(2)
-    ll.append(2)
+    # ll.append(4)
+    # ll.append(5)
+    ll.append(0)
     ll.append(1)
-    # ll.append(3)
+    # ll.append(2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
