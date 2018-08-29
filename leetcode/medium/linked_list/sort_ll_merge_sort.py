@@ -11,6 +11,26 @@
 
 
 class Solution(object):
+    def merge(self, ll1, ll2):
+        dummy = dummy_head = ListNode(0)
+        
+        while ll1 and ll2:
+            
+            if ll1.val > ll2.val:
+                dummy.next = ll2
+                dummy = dummy.next
+                ll2 = ll2.next
+            else:
+                dummy.next = ll1
+                dummy = dummy.next
+                ll1 = ll1.next
+        if ll1:
+            dummy.next = ll1
+        if ll2:
+            dummy.next = ll2
+            
+        return dummy_head.next
+    
     def sortList(self, head):
         """
         :type head: ListNode
@@ -29,6 +49,13 @@ class Solution(object):
         left = self.sortList(left_ll)
         mid.next = None
         right = self.sortList(head)
+
+        return self.merge(left, right)
+
+
+#Time Complexity NlognN
+
+#Space Complexity O(n)
 
         
 
