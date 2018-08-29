@@ -88,7 +88,9 @@ def intersection(ll1, ll2):
         curr1 = curr1.next
         curr2 = curr2.next
 
-   
+
+# time complexity: O(m+n)
+# space complexity O(1)
 
 
 
