@@ -39,6 +39,10 @@ def validate(root):
 
 
 
+
+
+
+
 if __name__ == "__main__":
 
     one = TreeNode(1)
