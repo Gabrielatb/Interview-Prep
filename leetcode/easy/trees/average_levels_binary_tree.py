@@ -13,57 +13,108 @@
 
 # Time Complexity: O(n)
 #Space Complexity: O(n)
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-
-class BST(object):
-    def __init__(self, data, left=None, right=None):
-        self.data = data
-        self.left = left
-        self.right = right
-
-
-    def print_list(self,root):
-
+class Solution(object):
+    def averageOfLevels(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[float]
+        """
+    
+    
         queue = [root]
-
+        averages = []
+        
         while queue:
-            node = queue.pop(0)
-            print node.data
-
-            if node.left:
-                queue.append(node.left)
-
-            if node.right:
-                queue.append(node.right)
-
-
-    def average(self,root):
-        level = [root]
-        average = []
-
-
-        while level:
-            total = 0.0
             new_level = []
-            for node in level:
-                total += node.data
+            count = 0.0
+            for node in queue:
+                count += node.val
                 if node.left:
                     new_level.append(node.left)
                 if node.right:
                     new_level.append(node.right)
-
-            average.append(total/len(level))
-            level = new_level
-
-        return average
-
-
+            average = float(count / len(queue))
+            averages.append(average)
+            queue = new_level
+        return averages
+                
 
 
 
 
+        queue = [root]
+        averages = []
+        
+        while queue:
+            new_level = []
+            count = 0.0
+            for node in queue:
+                count += node.val
+                if node.left:
+                    new_level.append(node.left)
+                if node.right:
+                    new_level.append(node.right)
+            average = float(count / len(queue))
+            averages.append(average)
+            queue = new_level
+        return averages
+                
+# class BST(object):
+#     def __init__(self, data, left=None, right=None):
+#         self.data = data
+#         self.left = left
+#         self.right = right
 
-if __name__ == '__main__':
+
+#     def print_list(self,root):
+
+#         queue = [root]
+
+#         while queue:
+#             node = queue.pop(0)
+#             print node.data
+
+#             if node.left:
+#                 queue.append(node.left)
+
+#             if node.right:
+#                 queue.append(node.right)
+
+
+#     def average(self,root):
+#         level = [root]
+#         average = []
+
+
+#         while level:
+#             total = 0.0
+#             new_level = []
+#             for node in level:
+#                 total += node.data
+#                 if node.left:
+#                     new_level.append(node.left)
+#                 if node.right:
+#                     new_level.append(node.right)
+
+#             average.append(total/len(level))
+#             level = new_level
+
+#         return average
+
+
+
+
+
+
+
+# if __name__ == '__main__':
     fifteen = BST(15)
     seven = BST(7)
     nine = BST(9)
