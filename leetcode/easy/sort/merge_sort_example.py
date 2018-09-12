@@ -1,56 +1,56 @@
 # #merge sort implementation from my code school
 
-class MergeSort:
-
-    def mergesort(self, a):
-
-        n = len(a)
-        left = []
-        right = []
-
-        if n < 2:
-            return 
 
 
-        for i in range(0,n):
-            if i < n /2:
-                left.append(a[i])
-            else:
-                right.append(a[i])
+def mergesort(a):
 
-        self.mergesort(left)
-        self.mergesort(right)
-        self.merge(left, right, a)
-        return a
+    n = len(a)
+    left = []
+    right = []
 
-    def merge(self, l, r, nums):
+    if n < 2:
+        return 
 
-        len_l = len(l)
-        len_r = len(r)
-        i = 0
-        j = 0
-        k = 0
 
-        while len_l > i and len_r > j:
-            if l[i] > r[j]:
-                nums[k] = r[j]
-                j += 1
+    for i in range(0,n):
+        if i < n /2:
+            left.append(a[i])
+        else:
+            right.append(a[i])
 
-            elif l[i] < r[j]:
-                nums[k] = l[i]
-                i += 1
+    mergesort(left)
+    mergesort(right)
+    merge(left, right, a)
+    return a
 
-            k += 1
+def merge(l, r, nums):
 
-        while len_l > i:
-            nums[k] = l[i]
-            i += 1
-            k += 1
+    len_l = len(l)
+    len_r = len(r)
+    i = 0
+    j = 0
+    k = 0
 
-        while len_r > j:
+    while len_l > i and len_r > j:
+        if l[i] > r[j]:
             nums[k] = r[j]
             j += 1
-            k += 1
+
+        elif l[i] < r[j]:
+            nums[k] = l[i]
+            i += 1
+
+        k += 1
+
+    while len_l > i:
+        nums[k] = l[i]
+        i += 1
+        k += 1
+
+    while len_r > j:
+        nums[k] = r[j]
+        j += 1
+        k += 1
 
 
 # class MergeSort:
