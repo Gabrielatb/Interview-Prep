@@ -11,21 +11,40 @@
 
 # Merge sort, Quick sort, Heap sort and Radix sort.
 
-#
+#Time complexity O(n**2)
+#Space Complexity O(1)
 def bubblesort(lst):
-    #[5,4,3,2,1]
+    #[4,3,2,1]
     for i in range(len(lst)):
         for j in range(i+1,len(lst)):
-            print 'index j ' + lst[j] 
-            print 'indx i ' + lst[i]
             if lst[j] < lst[i]:
+                temp = lst[i]
                 lst[i] = lst[j]
+                lst[j] = temp
+ 
 
     return lst
 
 
+#list
+def quicksort(lst):
 
-# def quicksort(lst):
+    if len(lst) < 2:
+        return lst
+    
+    mid = len(lst)/2
+    pivot = lst[mid]
+    left, right, eq = [], [], []
+
+    for elem in lst:
+        if elem < pivot:
+            left.append(elem)
+        elif elem > pivot:
+            right.append(elem)
+        else:
+            eq.append(elem)
+
+    return quicksort(left) + eq + quicksort(right)
 
 
 # #merge sort lists
