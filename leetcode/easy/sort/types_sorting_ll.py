@@ -33,30 +33,11 @@ class LinkedList(object):
             print current.val
             current = current.next
 
-    def quicksort_ll(head):
+#quick sort
+#Time Complexity: O(nlogn)
+#Space Complexity: ()
 
-        if head is None or head.next is None:
-            return None
 
-        pivot = find_mid(head)
-        left = left_head = Node(0)
-        right = right_head = Node(0)
-        eq = eq_head = Node(0)
-
-        curr = head
-        while curr:
-            if curr.val > pivot.val:
-                right.next = curr
-                right = right.next
-            elif curr.val < pivot.val:
-                left.next = curr
-                left = left.next
-            else:
-                eq.next = curr
-                eq = eq.next
-            curr = curr.next
-
-        return quicksort_ll(left.next) + eq.next + quicksort_ll(right.next)
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -65,3 +46,4 @@ if __name__ == '__main__':
     ll.append(2)
     ll.append(1)
 
+    quicksort(ll.head)

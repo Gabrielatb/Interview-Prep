@@ -27,75 +27,135 @@ def bubblesort(lst):
 
 
 #list
+#Time Complexity Worst: O(n**2), AverageO(nlogn)
+#Space Complexity O(n)
 def quicksort(lst):
 
-    if len(lst) < 2:
+    length = len(lst)
+
+    if length < 2:
         return lst
-    
-    mid = len(lst)/2
+
+    mid = length / 2
+    print "this is my original lst= " + str(lst)
+    print "this is my midpoint= " + str(mid)
     pivot = lst[mid]
-    left, right, eq = [], [], []
+    print "this is my pivot= " + str(pivot)
+
+    less, greater, eq = [], [], []
 
     for elem in lst:
-        if elem < pivot:
-            left.append(elem)
-        elif elem > pivot:
-            right.append(elem)
+        if elem > pivot:
+            greater.append(elem)
+        elif elem < pivot:
+            less.append(elem)
         else:
             eq.append(elem)
 
-    return quicksort(left) + eq + quicksort(right)
+    print "less= " + str(less)
+    print "greater= " + str(greater)
+    print "eq= " + str(eq)
+    return quicksort(less) + eq + quicksort(greater)
 
 
-# #merge sort lists
-# def merge_sort(lst):
+# Improved Quicksort, randomized pivot
+#Average O(nlogn), worst case (On**2) 
+#Space O(1)
 
 
-#     length = len(lst)
+def partition(lst, start, end):
+    pos = start                          
+                                         
+    for i in range(start, end):           
+        if lst[i] < lst[end]:             
+            lst[i],lst[pos] = lst[pos],lst[i]
+            pos += 1
 
-#     if length < 2:
-#         return
+    lst[pos],lst[end] = lst[end],lst[pos] 
+                                      
+    return pos
 
-#     mid = length/2
-#     left = lst[:mid]
-#     right = lst[mid:]
-
-
-#     merge_sort(right)
-#     merge_sort(left)
-#     merge(left, right, lst)
-
-#     return lst
-
-# def merge(l, r, nums):
-
-
-#     len_l = len(l)
-#     len_r = len(r)
-#     indx_r = 0
-#     indx_l = 0
-#     indx_nums = 0
-
-#     while len_l > indx_l and len_r > indx_r:
-#         if l[indx_l] > r[indx_r]:
-#             nums[indx_nums] = r[indx_r]
-#             indx_r +=1
-
-#         else:
-#             nums[indx_nums] = l[indx_l]
-#             indx_l +=1
-
-#         indx_nums += 1
+ 
+# Function to do Quick sort
+def quickSort(arr,low,high):
+    if low < high:
+ 
+        # pi is partitioning index, arr[p] is now
+        # at right place
+        pi = partition(arr,low,high)
+ 
+        # Separately sort elements before
+        # partition and after partition
+        quickSort(arr, low, pi-1)
+        quickSort(arr, pi+1, high)
+    return arr
+ 
+def quicksort(arr):
+    return quickSort(arr, 0, len(arr)-1)
+# Driver code to test above
+arr = [5,15,3,99]
+print quicksort(arr)
 
 
-#     while len_l > indx_l:
-#         nums[indx_nums] = l[indx_l]
-#         indx_l +=1
-#         indx_nums += 1
 
-#     while len_r > indx_r:
-#         nums[indx_nums] = r[indx_r]
-#         indx_r +=1
-#         indx_nums += 1
 
-#     print nums
+
+
+#Time Complexity: O(nlogn) --> n because we have to iterate over our list (logn because we are dividing and conquering)
+#Space Complexity: O(n) --> Creating new list to store values
+def merge(lst):
+
+    length = len(lst)
+
+    if length < 2:
+        return lst
+
+    mid = len(lst) / 2
+
+    left = lst[:mid]
+    right = lst[mid:]
+
+
+    merge(left)
+    merge(right)
+    return merge_sort(left,right, lst)
+
+
+def merge_sort(l, r, nums):
+    l_length = len(l)
+    r_length = len(r)
+    l_indx = 0
+    r_indx = 0
+    nums_indx = 0
+
+
+    while l_length > l_indx and r_length > r_indx:
+        if l[l_indx] > r[r_indx]:
+            nums[nums_indx] = r[r_indx]
+            r_indx +=1
+
+        else:
+            nums[nums_indx] = l[l_indx]
+            l_indx +=1
+
+        nums_indx +=1
+
+
+    while l_length > l_indx:
+        nums[nums_indx] = l[l_indx]
+        l_indx +=1
+
+    while r_length > r_indx:
+        nums[nums_indx] = r[r_indx]
+        r_indx +=1
+    return nums
+ 
+
+
+
+#Heap Sort 
+#Min Heap = value each node is less than children
+#Max Heap =  value each node is greater than children
+
+
+
