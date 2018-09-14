@@ -152,10 +152,56 @@ def merge_sort(l, r, nums):
  
 
 
+#Time: O(nlogn) 
+#Space: O(1)
+def heap_sort(lst):
+    """Add items to binary heap (keeping them in order!) and then extract."""
+
+    def move_down(first, last):
+        """Move item down in heap to proper place."""
+
+        # Assume left-hand child is bigger
+        largest = 2 * first + 1
+
+        while largest <= last:
+            if largest < last and lst[largest] < lst[largest + 1]:
+                # Right child exists and is larger than left child
+                largest += 1
+
+            if lst[largest] > lst[first]:
+                # Selected child is bigger than parent, so swap
+                lst[largest], lst[first] = lst[first], lst[largest]
+
+                # Move down to largest child
+                first = largest
+                largest = 2 * first + 1
+
+            else:
+                # Once we don't swap, it's in the right place; exit
+                return 
+
+    # Convert lst to heap
+
+    length = len(lst) - 1
+    least_parent = length // 2
+
+    for i in range(least_parent, -1, -1):
+        move_down(i, length)
+
+    # Flatten heap into sorted array
+
+    for i in range(length, 0, -1):
+        if lst[0] > lst[i]:
+            lst[0], lst[i] = lst[i], lst[0]
+            move_down(0, i - 1)
+
+    return lst
+
 
 #Heap Sort 
 #Min Heap = value each node is less than children
 #Max Heap =  value each node is greater than children
+
 
 
 
