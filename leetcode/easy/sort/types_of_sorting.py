@@ -25,7 +25,10 @@ def bubblesort(lst):
 
     return lst
 
-
+#Runtime O(n**2)
+#Space Complexity
+def insertion_sort(lst):
+    pass
 #list
 #Time Complexity Worst: O(n**2), AverageO(nlogn)
 #Space Complexity O(n)
@@ -62,44 +65,81 @@ def quicksort(lst):
 #Average O(nlogn), worst case (On**2) 
 #Space O(1)
 
+# [1.2.3, 4.2.0, 4.11.6, ]
+
+#call quicksort (0, length-1)
+#pivot = partition(arr, lo, high)
+    #pivot = start
+    #for i in start to end
+        #if i element < end:
+            #pivot + 1
+            #swap i, pivot
+    #pivot, end
+#recursvely call
+#quicksort(arr, lo+1, hi)
+#quicksort(arr, lo, hi-1) 
+
+'1.2.3'
+
+      # lst_i = lst[i].split('.')
+      #   lst_end = lst[end].split('.')
+
+
+      #   if lst_i[0] < lst_end[0]:
+      #       lst[i], lst[pivot] = lst[pivot], lst[i]
+      #       pivot +=1
+      #   elif lst_i[0] == lst_end[0]:
+      #       if lst_i[1] < lst_end[1]:
+      #           lst[i], lst[pivot] = lst[pivot], lst[i]
+      #           pivot +=1
+      #       elif lst_i[1] == lst_end[1]:
+      #           if lst_i[2] < lst_end[2]:
+      #               lst[i], lst[pivot] = lst[pivot], lst[i]
+      #               pivot +=1
 
 def partition(lst, start, end):
-    pos = start                          
-                                         
-    for i in range(start, end):           
-        if lst[i] < lst[end]:             
-            lst[i],lst[pos] = lst[pos],lst[i]
-            pos += 1
+    # print 'start list ', lst
+    pivot = start
 
-    lst[pos],lst[end] = lst[end],lst[pos] 
-                                      
-    return pos
+    for i in range(start, end):
+        lst_i = lst[i].split('.')
+        lst_end = lst[end].split('.')
+        if int(lst_i[0]) < int(lst_end[0]):
+            lst[i], lst[pivot] = lst[pivot], lst[i]
+            pivot +=1
+        elif int(lst_i[0]) == int(lst_end[0]):
+            if int(lst_i[1]) < int(lst_end[1]):
+                lst[i], lst[pivot] = lst[pivot], lst[i]
+                pivot +=1
+            elif int(lst_i[1]) == int(lst_end[1]):
+                if int(lst_i[2]) < int(lst_end[2]):
+                    lst[i], lst[pivot] = lst[pivot], lst[i]
+                    pivot +=1
 
- 
-# Function to do Quick sort
-def quickSort(arr,low,high):
-    if low < high:
- 
-        # pi is partitioning index, arr[p] is now
-        # at right place
-        pi = partition(arr,low,high)
- 
-        # Separately sort elements before
-        # partition and after partition
-        quickSort(arr, low, pi-1)
-        quickSort(arr, pi+1, high)
-    return arr
- 
-def quicksort(arr):
-    return quickSort(arr, 0, len(arr)-1)
-# Driver code to test above
-arr = [5,15,3,99]
-print quicksort(arr)
+    lst[end], lst[pivot] = lst[pivot], lst[end]
+    # print 'end list ', lst
+    return pivot
 
+def quicksort_helper(lst, lo, hi):
+    if lo < hi:
 
+        pivot = partition(lst, lo, hi)
 
+        quicksort_helper(lst, pivot+1, hi)
+
+        quicksort_helper(lst, lo, pivot-1)
+
+    return lst
 
 
+def quicksort(lst):
+    print 'original list'
+    return quicksort_helper(lst, 0, len(lst)-1)
+
+print quicksort(['1.2.3', '4.11.6', '4.2.0', '1.5.19', '1.5.5', '4.1.3', '2.3.1',
+                '10.5.5', '11.3.0'])
+
+# print quicksort([2,4,3,5,1])
 
 #Time Complexity: O(nlogn) --> n because we have to iterate over our list (logn because we are dividing and conquering)
 #Space Complexity: O(n) --> Creating new list to store values
