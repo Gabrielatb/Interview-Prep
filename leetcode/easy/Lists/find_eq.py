@@ -18,3 +18,22 @@ Explaination:
     return 2 (the index of the last element in the first half of the list)
 """
 
+
+def find_eq(lst):
+
+    left, right = 0, len(lst) - 1
+
+    sum_r, sum_l = lst[right], lst[left]
+
+    while left < right:
+        if sum_r > sum_l:
+            left += 1
+            sum_l += lst[left]
+        else:
+            right -=1
+            sum_r += lst[right]
+
+    return left
+
+print find_eq([2, 4, 3, 1, 2, 1, 5])
+
