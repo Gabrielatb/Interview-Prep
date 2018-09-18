@@ -1,6 +1,8 @@
-# Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+# Given a non-empty array of digits representing a non-negative integer, 
+# plus one to the integer.
 
-# The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+# The digits are stored such that the most significant digit is at the head of the list, 
+#and each element in the array contain a single digit.
 
 # You may assume the integer does not contain any leading zero, except the number 0 itself.
 
@@ -20,24 +22,43 @@ def plusOne(digits):
     :type digits: List[int]
     :rtype: List[int]
     """
-    mult = 1
-    total = 0
-    for num in digits[::-1]:
-        total += num * mult
+#     mult = 1
+#     total = 0
+#     for num in digits[::-1]:
+#         total += num * mult
 
-        mult = mult *10
+#         mult = mult *10
 
-    total +=1
-    total_string = str(total)
-    ret = []
-    for num_string in total_string:
-        ret.append(int(num_string))
+#     total +=1
+#     total_string = str(total)
+#     ret = []
+#     for num_string in total_string:
+#         ret.append(int(num_string))
 
-    return ret
+#     return ret
 
-print plusOne([1,2,3])
+# print plusOne([1,2,3])
 print plusOne([9,9])
-   
+
+    last_digit = digits[0]
+        
+        if digits[-1] < 9:
+            digits[-1] +=1
+        else:
+            i = -1
+            while digits[i] == 9:
+                if -(len(digits)) == i:
+                    digits[i] =0
+                    digits.insert(0,1)
+                    return digits
+                else:
+                    digits[i] = 0
+                    i-=1
+            digits[i] +=1
+        
+                
+            
+        return digits
 
 
 

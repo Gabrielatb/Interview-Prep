@@ -15,12 +15,12 @@ def maxSubArray(nums):
     #[-2*,1,-3,4,-1,2,1,-5*,4]
     #      [4,-1,2,1] has the largest sum = 6.
     
-    max_sum, curr_max = array[0], array[0]
+        
+    curr_max, max_sum = nums[0], nums[0]
     
-        for i in range(1, len(array)):
-            curr_max = max(curr_max + array[i], array[i])
-            if curr_max > max_sum:
-                max_sum = curr_max
-        return max_sum
-
-print maxSubArray([1,2])
+    for i in range(1, len(nums)):
+        curr_max = max(nums[i], curr_max + nums[i])
+        if curr_max > max_sum:
+            max_sum = curr_max
+            
+    return max_sum
