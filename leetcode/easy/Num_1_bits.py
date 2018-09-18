@@ -1,4 +1,5 @@
-# Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
+# Write a function that takes an unsigned integer and returns the number of '1' bits it has
+#(also known as the Hamming weight).
 
 # Example 1:
 
@@ -16,25 +17,11 @@
 
 
 
+def hammingWeight(self, n):
 
+    count = 0
+    while n:
+        count += n & 1
+        n>>=1
 
-
-
-
-
-
-
-
-
-
-
-
-
-# def hammingWeight(self, n):
-
-#     count = 0
-#     while n:
-#         count += n & 1
-#         n>>=1
-
-#     return count
+    return count
