@@ -1,8 +1,6 @@
 # Given a binary search tree (BST), find the lowest common ancestor (LCA) of
 #two given nodes in the BST.
 
-# According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
-
 # Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
 
 #         _______6______
@@ -21,7 +19,7 @@
 
 # Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
 # Output: 2
-# Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself 
+# Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself
 #              according to the LCA definition.
 # Note:
 
@@ -30,39 +28,57 @@
 
 
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution(object):
-    def lowestCommonAncestor(self, root, p, q):
-        """
-        :type root: TreeNode
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: TreeNode
-        """
+class TreeNode(object):
+    def __init__(self, x, left=None, right=None):
+        self.val = x
+        self.left = left
+        self.right = right
 
 
-        #we have two scenarios:
-        #val is equal to root
-        #p smaller than root, root greater than q
-        
-        
-        #reasuring that q is greater than p
-        if p.val > q.val:
-            p, q = q, p
-            
-        while root:
-            
-            if root.val == p.val or root.val == q.val:
-                return root
-            elif p.val < root.val < q.val:
-                return root
-            elif root.val < p.val and root.val < q.val:
-                root = root.right
-            elif root.val > p.val and root.val > q.val:
-                root = root.left
+def lowestCommonAncestor(root, p, q):
+    """
+    :type root: TreeNode
+    :type p: TreeNode
+    :type q: TreeNode
+    :rtype: TreeNode
+    """
+
+   if root is None:
         return None
+
+    if root.val == p.val or root.val == q.val:
+        return root
+
+    
+    left = self.lowestCommonAncestor(root.left, p, q)
+    right = self.lowestCommonAncestor(root.right, p, q)
+    
+    if left and right:
+        return root
+    else:
+        return left or right
+
+
+
+   #      _______3______
+   #     /              \
+   #  ___5__          ___1__
+   # /      \        /      \
+   # 6      _2       0       8
+   #       /  \
+   #       7   4
+
+if __name__ == '__main__':
+    seven = TreeNode(7)
+    four = TreeNode(4)
+    two = TreeNode(2, seven, four)
+    six = TreeNode(6)
+    five = TreeNode(5, six, two)
+    zero = TreeNode(0)
+    eight = TreeNode(8)
+    one = TreeNode(1, zero, eight)
+    three = TreeNode(3, five, one)
+    print lowestCommonAncestor(three, 5, 1)
+
+
+
