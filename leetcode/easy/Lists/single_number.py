@@ -13,35 +13,59 @@
 # Input: [4,1,2,1,2]
 # Output: 4
 
+def one_elem(lst):
 
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
 
-       
-        #linear time complexity 
+    #Time Complexity: O(n**2)
+    #Space Complexity: O(n)
+    return_lst = []
+    for num in nums:
+        if num not in return_lst:
+            return_lst.append(num)
+        else:
+            return_lst.remove(num)
+    return return_lst.pop()
+
+
+
+# print one_elem([2,2,1])
+# print one_elem([4,1,2,1,2])
+# print one_elem([17,12,5,-6,12,4,17,-5,2,-3,2,4,5,16,-3,-4,15,15,-4,-5,-6])
+
+    #Runtime O(n)
+    #Space Complexity O(n)
+    dict_ = {}
     
-        dict_nums = {}
+    for num in nums:
+        if num not in dict_:
+            dict_[num] = 1
+        else:
+            dict_[num] += 1
+            
+    for key in dict_:
+        if dict_[key] == 1:
+            return key
 
-        for num in nums:
-            if num in dict_nums:
-                dict_nums[num] += 1
 
-            else:
-                dict_nums[num] = 1
+    #Runtime: O(n)
+    #Space Complexity: O(n)
+    return (2 * sum(set(nums))) - sum(nums)
 
-        print dict_nums
-        for key in dict_nums:
-            print key, dict_nums[key]
-            if dict_nums[key] == 1:
-                print "inside return statement"
-                return key
 
-        return None
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
-            
+#             

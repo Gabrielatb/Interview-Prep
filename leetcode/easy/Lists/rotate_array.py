@@ -12,20 +12,55 @@
 
 # Input: [-1,-100,3,99] and k = 2
 # Output: [3,99,-1,-100]
-# Explanation: 
+# Explanation:
 # rotate 1 steps to the right: [99,-1,-100,3]
 # rotate 2 steps to the right: [3,99,-1,-100]
-def rotate(nums, k):
-    """
-    :type nums: List[int]
-    :type k: int
-    :rtype: void Do not return anything, modify nums in-place instead.
-    """
 
 
-    for _ in range(k):
-        num = nums.pop()
-        nums.insert(0, num)
-    return nums
+def rotate(lst, k):
+    """Rotating list by k number of spaces """
 
-print rotate([-1,-100,3,99], 2)
+
+    for i in range(k):
+        num = lst.pop()
+        lst.insert(0, num)
+
+    return lst
+
+print rotate([1, 2, 3, 4, 5, 6, 7], 3)
+#[5,6,7,1, 2, 3, 4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def rotate(nums, k):
+#     """
+#     :type nums: List[int]
+#     :type k: int
+#     :rtype: void Do not return anything, modify nums in-place instead.
+#     """
+
+
+#     for _ in range(k):
+#         num = nums.pop()
+#         nums.insert(0, num)
+#     return nums
+
+# print rotate([-1,-100,3,99], 2)
