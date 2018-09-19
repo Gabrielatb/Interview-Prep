@@ -129,7 +129,7 @@ def quicksort_helper(lst, lo, hi):
 
         quicksort_helper(lst, lo, pivot-1)
 
-    return lst
+        return lst
 
 
 def quicksort(lst):

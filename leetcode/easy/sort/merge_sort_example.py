@@ -2,102 +2,66 @@
 
 
 
-def mergesort(a):
+# if given
 
-    n = len(a)
-    left = []
-    right = []
-
-    if n < 2:
-        return 
-
-
-    for i in range(0,n):
-        if i < n /2:
-            left.append(a[i])
-        else:
-            right.append(a[i])
-
-    mergesort(left)
-    mergesort(right)
-    merge(left, right, a)
-    return a
+#[5,99,7,1,15]
 
 def merge(l, r, nums):
+    print 'print inside merge'
+    print 'this is l ', l
+    print 'this is r ', r
+    l_indx = 0
+    r_indx = 0
+    lst_indx = 0
+    length_l = len(l) 
+    length_r = len(r)
 
-    len_l = len(l)
-    len_r = len(r)
-    i = 0
-    j = 0
-    k = 0
-
-    while len_l > i and len_r > j:
-        if l[i] > r[j]:
-            nums[k] = r[j]
-            j += 1
-
-        elif l[i] < r[j]:
-            nums[k] = l[i]
-            i += 1
-
-        k += 1
-
-    while len_l > i:
-        nums[k] = l[i]
-        i += 1
-        k += 1
-
-    while len_r > j:
-        nums[k] = r[j]
-        j += 1
-        k += 1
+    while length_l > l_indx and length_r > r_indx:
+        if l[l_indx] > r[r_indx]:
+            nums[lst_indx] = r[r_indx]
+            r_indx +=1
+        else:
+            nums[lst_indx] = l[l_indx]
+            l_indx +=1
+        lst_indx +=1
+    print 'print nums for first time ', nums
 
 
-# class MergeSort:
+    while length_l > l_indx:
+        print 'inside l'
+        nums[lst_indx] = l[l_indx]
+        l_indx +=1
+        lst_indx +=1
 
-    # def _sort(self, arr):
-    #     arr1 = []
-    #     arr2 = []
 
-    #     n = len(arr)
+    while length_r > r_indx:
+        print 'inside r'
+        nums[lst_indx] = r[r_indx]
+        r_indx +=1
+        lst_indx +=1
 
-    #     if n <= 1:
-    #         return
+    print 'this is nums ', nums
+    return nums
 
-    #     for i in range(0, n):
-    #         if i < (n / 2):
-    #             arr1.append(arr[i])
-    #         else:
-    #             arr2.append(arr[i])
+def merge_lst(lst):
 
-    #     self._sort(arr1)
-    #     self._sort(arr2)
-    #     self._merge(arr, arr1, arr2)
-    #     return arr
+    if len(lst) < 2:
+        return lst
 
-    # def _merge(self, arr, arr1, arr2):  
-    #     end1 = len(arr1)
-    #     end2 = len(arr2)
-    #     start1 = 0
-    #     start2 = 0
-    #     k = 0
+    mid = len(lst) / 2
+    print mid
 
-    #     while (start1 < end1) and (start2 < end2):
-    #         if arr1[start1] < arr2[start2]:
-    #             arr[k] = arr1[start1]
-    #             start1 += 1
-    #         else:
-    #             arr[k] = arr2[start2]
-    #             start2 += 1
-    #         k += 1
+    left = lst[:mid]
+    print 'this is left ', left
+    right = lst[mid:]
+    print 'this is right ', right
 
-    #     while start1 < end1:
-    #         arr[k] = arr1[start1]
-    #         start1 += 1
-    #         k += 1
+    merge_lst(left)
+    # print 'this is l ' , l
+    merge_lst(right)
+    # print 'this is r ', r
+    merge(left, right, lst)
 
-    #     while start2 < end2:
-    #         arr[k] = arr2[start2]
-    #         start2 += 1
-    #         k += 1
+    return lst
 
+print merge_lst([99, 5,7,1,15])
