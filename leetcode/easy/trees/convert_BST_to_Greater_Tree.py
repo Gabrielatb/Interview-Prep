@@ -16,49 +16,119 @@
 
 
 
-#Time Complexity O(n)
-#Space Complexity O(h)
-
 class BST(object):
     def __init__(self, data, left=None, right=None):
         self.val = data
         self.left = left
         self.right = right
+        self.count = 0
+
+    def convertBST_helper(self, root):
 
 
-        #reverse inorder traversal 
+        if root is None:
+            return None
 
-    def greater_tree(self, root):
-        """
-        >>> five.greater_tree(five)
-        18
-        """
 
-        stack = []
-        curr = root
-        total = 0
+        self.convertBST_helper(root.right)
+        self.count += root.val
+        self.convertBST_helper(root.left)
+        return root
+      
+            # self.count += right.val
+            # left.val = self.count
+        
 
-        while stack or curr:
-            while curr:
-                stack.append(curr)
-                curr = curr.right
+    def convertBST(self, root):   
+        self.convertBST_helper(root)
+        return self.count
 
-            curr = stack.pop()
-            total += curr.val
-            curr.val = total
-            curr = curr.left
 
-        return root.val
+
+
+
 
 
 if __name__ == '__main__':
     two = BST(2)
     thirteen = BST(13)
     five = BST(5, two, thirteen)
+    print five.convertBST(five)
 
-    import doctest
-    if doctest.testmod().failed == 0:
-        print '***Solution Passed***'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Time Complexity O(n)
+#Space Complexity O(h)
+
+
+# class BST(object):
+#     def __init__(self, data, left=None, right=None):
+#         self.val = data
+#         self.left = left
+#         self.right = right
+
+
+#         #reverse inorder traversal 
+
+#     def greater_tree(self, root):
+#         """
+#         >>> five.greater_tree(five)
+#         18
+#         """
+
+#         stack = []
+#         curr = root
+#         total = 0
+
+#         while stack or curr:
+#             while curr:
+#                 stack.append(curr)
+#                 curr = curr.right
+
+#             curr = stack.pop()
+#             total += curr.val
+#             curr.val = total
+#             curr = curr.left
+
+#         return root.val
+
+
+# if __name__ == '__main__':
+#     two = BST(2)
+#     thirteen = BST(13)
+#     five = BST(5, two, thirteen)
+
+#     import doctest
+#     if doctest.testmod().failed == 0:
+#         print '***Solution Passed***'
 
 
 

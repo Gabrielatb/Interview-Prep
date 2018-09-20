@@ -14,7 +14,6 @@
     # >>> bst_has_data(root, 1)
     # False
 
-
 class BST(object):
     def __init__(self, data, left=None, right=None):
         self.data = data
