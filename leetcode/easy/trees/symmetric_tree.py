@@ -23,6 +23,9 @@ class BT(object):
         self.left = left
         self.right = right
 
+    # Runtime: O(n)
+    #Space Complexity: O(n)
+
 
     def is_symmetric(self, root):
 
@@ -94,7 +97,8 @@ if __name__ == '__main__':
 
 
 
-
+#Runtime O(n)
+#Space Complexty O(h)
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):

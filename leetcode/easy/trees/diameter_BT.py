@@ -19,31 +19,31 @@
 #
 
 #O(N) time: Visiting each node
-#O(N) space: call stack
+#O(h) space: call stack
 
-class BT(object):
-    def __init__(self, data, left=None, right=None):
-        self.data = data
-        self.left = left
-        self.right = right
-
-
-    def find_diameter(self, root):
-
-        ans = self.ans
-
+class Solution(object):
+    def diameterOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.max = 0
+        def helper(root):
     
-
-        def find_longest_path(self, root):
-
             if root is None:
                 return 0
-            left = find_longest_path(self.left)
-            right = find_longest_path(self.right)
-            self.ans = max(self.ans, left+right+1)
+
+            left = helper(root.left)
+            right = helper(root.right)
+
+            temp = (left + right)
+
+            if temp > self.max:
+                self.max = temp
+
             return max(left, right) + 1
-
-
-        find_longest_path(root)
-        return self.ans
+    
+       
+        helper(root)
+        return self.max
 
