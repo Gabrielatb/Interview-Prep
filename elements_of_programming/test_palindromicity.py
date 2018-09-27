@@ -23,14 +23,6 @@ def is_palindome(string):
             return False
     return True
 
-# print is_palindome('Able was I, ere I saw Elba!')
-
-
-
-
-
-
-
 if __name__ == '__main__':
     import doctest
     if doctest.testmod().failed == 0:
