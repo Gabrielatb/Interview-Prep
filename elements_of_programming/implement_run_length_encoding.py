@@ -1,7 +1,8 @@
 # implement run-length encoding and decoding
 
 
-# 'aaaabcccaa' --> 4a1b3c2a
+
+#Time Complexity: O(n)
 
 def encoding(s):
     """"
@@ -31,6 +32,7 @@ def encoding(s):
     encoded += str(count) + prev
     return encoded
 
+# Time Complexity: O(n)
 def decoding(s):
     """"
     >>> decoding('3e4f2e')
