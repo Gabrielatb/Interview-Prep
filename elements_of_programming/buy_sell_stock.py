@@ -26,14 +26,14 @@ def maxProfit(prices):
     :type prices: List[int]
     :rtype: int
     """
-    max_profit = None
+
     
     #[7,6(i),4,3,1]
     # max_proft = -1
     
 # time complexity O(n**2)
 # space complexity O(1)
-    maxprofit = 0;
+    maxprofit = 0
     for i in range(0, len(prices)):
         for j in range(i+1, len(prices)):
             profit = prices[j] - prices[i]
