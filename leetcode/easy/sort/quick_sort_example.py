@@ -1,44 +1,51 @@
 #[5,88,15,2,6]
 
-#P_index
-#partition([2*,5,15*,88i*,6], lo=0, hi=4)
+#[4,3,2*,1,6,7]
 
+# Runtime O(nlog(n))
+#Space Complexity O(1)
 def partition(lst, start, end):
-    pivot = start
+
+    pivot = lst[end]
+    p_index = start
 
     for i in range(start, end):
-        print i
+        if lst[i] < pivot:
 
-        if lst[i] <= lst[end]:
-
-            lst[i], lst[pivot] = lst[pivot], lst[i]
-
-            pivot += 1
-
-        print lst
-
-    lst[end], lst[pivot] = lst[pivot], lst[end]
-    print lst
-        
-
-    print 'this is the pivot ', pivot
-    print '##############################'
-    return pivot
-
-def quicksort_helper(lst, lo, hi):
-    print 'inside helper'
-    if lo < hi:
-
-        pivot = partition(lst, lo, hi)
-        quicksort_helper(lst, pivot+1, hi)
-
-        quicksort_helper(lst, lo, pivot-1)
+            lst[i], lst[p_index] =  lst[p_index], lst[i]
+            p_index += 1
 
 
-def quicksort(lst):
+    lst[p_index], lst[end] = lst[end], lst[p_index]
+    return p_index
 
-    quicksort_helper(lst, 0, len(lst)-1)
-    return lst 
+def quicksort(lst, start, end):
+
+    #if segment invalid, or if segment has one element
+
+    if start < end:
 
 
-print quicksort([5,88,15,2,6])
+        p_indx = partition(lst, start, end)
+
+        quicksort(lst, start, p_indx -1)
+        quicksort(lst, p_indx+1, end)
+
+    return lst
+
+print quicksort([5,4,3,2,1], 0, 4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
