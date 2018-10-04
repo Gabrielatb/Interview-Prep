@@ -1,10 +1,19 @@
 #different types of sorting:
 
 # 1. quicksort: implement it, explain it
+
+
 # 2. mergesort: implement it, talk about space complexity as well as time complexity
+
 # 3. insertion sort: explain when it can be better than the above two
+    # - if small list, insertion sort could be more useful becasue do not need recursive stack
+    # - time: O(n**2), space: O(1)
+
+
 # 4. heapsort: explain how it works, and how heaps work in general
+    # Useful when you want to maintain a particular order and extract min and max, not useful for arb searches
 # 5. bubble sort: why it's awful
+    # O(n**2 best runtime)
 # 6. radix/counting/bucket sort: when it's useful
 # 7. selection sort: usually thrown in as an example when asked to list sorting algorithms you know
 
@@ -26,9 +35,23 @@ def bubblesort(lst):
     return lst
 
 #Runtime O(n**2)
-#Space Complexity
+#Space Complexity O(1)
 def insertion_sort(lst):
-    pass
+
+    for i in range(1,len(lst)):
+        key = lst[i]
+
+        hole = i
+
+        while hole > 0 and key < lst[hole-1]:
+            lst[hole] = lst[hole-1]
+            hole -=1
+            
+        lst[hole] = key
+
+    return lst
+
+print insertion_sort([5,4,3,2,1])
 #list
 #Time Complexity Worst: O(n**2), AverageO(nlogn)
 #Space Complexity O(n)
