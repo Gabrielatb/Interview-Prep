@@ -44,18 +44,38 @@ def word_break(s, wordDict):
     return_lst = []
 
     for word in wordDict:
-        if s.starswith(word):
+        if s.startswith(word):
             i = len(word)
-            temp = word[i:]
+            temp = s[i:]
             poss_breaks = word_break(temp, wordDict)
             if poss_breaks:
-                for poss_break in word_break(temp, wordDict):
+                for poss_break in poss_breaks:
+                    print poss_break
                     return_lst.append(word + ' ' + poss_break)
             else:
                 return_lst.append(word)
 
     return return_lst
 
+
+vocab = {
+'a',
+'ate',
+'dinner',
+'for',
+'ford',
+'i',
+'inner',
+'night',
+'noodles',
+'oodles',
+'ten',
+'to',
+'tonight'
+}
+
+
+print word_break("atenoodles", vocab)
 
 
 
