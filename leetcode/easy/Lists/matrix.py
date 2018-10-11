@@ -20,7 +20,7 @@ def get_path(matrix, row, col, mountains):
     if point in mountains:
         return False
 
-    if row < 0 or col < 0 or matrix[row][col] == False or matrix[row][col]=='^':
+    if row < 0 or col < 0 or matrix[row][col]== '^':
         mountains.add(point)
         return False
 
