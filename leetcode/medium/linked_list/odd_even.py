@@ -15,7 +15,7 @@
 
 class Node(object):
     def __init__(self, data):
-        self.data = data
+        self.val = data
         self.next = None
 
 class LinkedList(object):
@@ -40,45 +40,34 @@ class LinkedList(object):
         curr = self.head
 
         while curr:
-            print curr.data
+            print curr.val
             curr = curr.next
-
+# Time O(n)
+# Space O(1)
     def odd_even(self):
-        #Time Complexity O(n)
-        #Space Complexity O(1)
 
-        count = 1
-        even = even_head = Node(0)
-        odd = odd_head = Node(0)
+        if self.head is None:
+            return None
 
-        curr = self.head
+        odd = self.head
+        even_head = self.head.next
+        even = self.head.next
+        
+        while even and even.next:
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
 
-        while curr:
-            if count % 2 != 0:
-                odd.next = curr
-                odd = odd.next
-            else:
-                even.next = curr
-                even = even.next
+        odd.next = even_head
+        print self.print_list()
+        return self.head
 
-            curr = curr.next
-            count +=1
-        even.next = None
-
-        odd.next = even_head.next
-
-        result = odd_head.next
-    
-        while result:
-            print result.data
-            result = result.next
-        return 'done'
-
-
-
-
-
-
+       
+        # while odd_head.next:
+        #     print 'inside of second for loop'
+        #     print odd_head
+        #     odd_head = odd_head.next
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -87,4 +76,38 @@ if __name__ == '__main__':
     ll.append(3)
     ll.append(4)
     ll.append(5)
+    ll.odd_even()
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
