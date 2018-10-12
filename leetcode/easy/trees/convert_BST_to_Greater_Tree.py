@@ -15,6 +15,9 @@
 #           20     13
 
 
+#Recursive
+#Time Complexity O(n)
+#Space Complexity O(h)
 
 class BST(object):
     def __init__(self, data, left=None, right=None):
@@ -26,67 +29,16 @@ class BST(object):
     def convertBST_helper(self, root):
 
 
-        if root is None:
-            return None
+        if root is not None:
+            self.convertBST_helper(root.right)
+            self.count += root.val
+            self.convertBST_helper(root.left)
 
-
-        self.convertBST_helper(root.right)
-        self.count += root.val
-        self.convertBST_helper(root.left)
         return root
       
-            # self.count += right.val
-            # left.val = self.count
-        
-
-    def convertBST(self, root):   
-        self.convertBST_helper(root)
-        return self.count
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    two = BST(2)
-    thirteen = BST(13)
-    five = BST(5, two, thirteen)
-    print five.convertBST(five)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #Time Complexity O(n)
-#Space Complexity O(h)
+#Space Complexity O(n)
 
 
 # class BST(object):
@@ -96,30 +48,24 @@ if __name__ == '__main__':
 #         self.right = right
 
 
-#         #reverse inorder traversal 
 
-#     def greater_tree(self, root):
-#         """
-#         >>> five.greater_tree(five)
-#         18
-#         """
-
-#         stack = []
-#         curr = root
-#         total = 0
-
-#         while stack or curr:
-#             while curr:
-#                 stack.append(curr)
-#                 curr = curr.right
-
-#             curr = stack.pop()
-#             total += curr.val
-#             curr.val = total
-#             curr = curr.left
-
-#         return root.val
-
+        def greater_tree(self, root):
+            stack = []
+            total = 0
+            curr = root
+            
+            while curr or stack:
+                while curr:
+                    stack.append(curr)
+                    curr = curr.right
+                    
+                curr = stack.pop()
+                total += curr.val
+                curr.val = total
+                curr = curr.left
+                
+            return root
+       
 
 # if __name__ == '__main__':
 #     two = BST(2)

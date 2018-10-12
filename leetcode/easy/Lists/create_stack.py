@@ -14,6 +14,7 @@
 # maxStack.pop();
 # maxStack.top();      --> Returns 0.
 # maxStack.getMin();   --> Returns -2.
+
 class MinStack(object):
 
     def __init__(self):
@@ -23,7 +24,6 @@ class MinStack(object):
         self.stack = []
         self.min = []
         
-
     def push(self, x):
         """
         :type x: int
@@ -36,7 +36,6 @@ class MinStack(object):
         else:
             self.min.append(min(x, self.min[-1]))
         
-
     def pop(self):
         """
         :rtype: void
@@ -45,9 +44,6 @@ class MinStack(object):
         self.min.pop()
         return  self.stack.pop()
         
-        
-        
-
     def top(self):
         """
         :rtype: int
@@ -61,7 +57,6 @@ class MinStack(object):
         """
         if self.min:
             return self.min[-1]
-
 
 class MaxStack(object):
 
@@ -85,17 +80,13 @@ class MaxStack(object):
         else:
             self.max.append(max(x, self.min[-1]))
         
-
     def pop(self):
         """
         :rtype: void
         """
     
         self.max.pop()
-        return self.stack.pop()
-        
-        
-        
+        return self.stack.pop()     
 
     def top(self):
         """
