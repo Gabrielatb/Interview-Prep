@@ -50,6 +50,8 @@
 #     return final
 
 
+# Time O(n)
+# Space O(1)
 def longest_palindrome(s):
     """
     :type s: str
