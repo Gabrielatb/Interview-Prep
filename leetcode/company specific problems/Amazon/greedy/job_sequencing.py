@@ -3,36 +3,47 @@
 # single unit of time, so the minimum possible deadline for any job is 1. 
 # How to maximize total profit if only one job can be scheduled at a time.
 
-def job_seq(lst):
+#Time: O(n**2)
+#Space: O(n)
 
-    profit_lst = [0] * len(lst)
+def job_seq(jobs):
+    jobs.sort(key=lambda x:x[2])
+    jobs = jobs[::-1]
 
-    lst.sort(key=lambda x:x[2])
-    lst = lst[::-1]
-    
-    # if profit_lst[0] == 0:
-    #     profit_lst[0] = lst[0][0]
-    #     print profit_lst
-    
-    for job in lst:
-        if profit_lst[job[1]-1] == 0:
-            profit_lst[job[1]-1] = job[0]
+    job_lst = [0] * len(jobs)
+
+    for job in jobs:
+        if job_lst[job[1]-1] == 0:
+            job_lst[job[1]-1] = job[0]
         else:
-            i = job[1]-1
-            while i >=0:
-                if profit_lst[i] == 0:
-                    profit_lst[i] = job[0]
+            job_interval = job[1] - 2
+            while job_interval >= 0:
+                if job_lst[job_interval] == 0:
+                    job_lst[job_interval] == job[0]
                     break
-                i-=1
-    
-    result_lst = []
-    for job in profit_lst:
+                else:
+                    job_interval -= 1
+    return_lst = []
+    for job in job_lst:
         if job != 0:
-            result_lst.append(job)
-    return result_lst   
+            return_lst.append(job)
+    return return_lst
+
+
+jobs = [['a', 4, 20], ['b', 1, 10], ['c', 1, 40], ['d', 1, 30]]
+
+
+print job_seq(jobs)
 
 
 
-lst = [['a', 2, 100], ['b', 1, 19], ['c', 2, 27], 
-                   ['d', 1, 25], ['e', 3, 15]]
-print job_seq(lst)
+
+
+
+
+
+
+
+
+
+
