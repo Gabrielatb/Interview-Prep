@@ -14,7 +14,7 @@
 
 #[ 1, 2, 5, 10, 20, 50, 100, 500, 1000 ]
 
-#Time: O(n)
+#Time: O(V)
 #Space: O(1)
 
 def min_num(lst, V):
