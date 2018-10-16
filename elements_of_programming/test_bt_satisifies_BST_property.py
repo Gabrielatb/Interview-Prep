@@ -69,38 +69,40 @@
 #     return True
 
 #################################################################################
-class BT(object):
-    def __init__(self, data, left=None, right=None):
-        self.val = data
-        self.left = left
-        self.right = right
+# Time O(n)
+# # Space O(h)
+# class BT(object):
+#     def __init__(self, data, left=None, right=None):
+#         self.val = data
+#         self.left = left
+#         self.right = right
 
-def check_bst(root, min_=float('-inf'), max_=float('inf')):
-    """
+# def check_bst(root, min_=float('-inf'), max_=float('inf')):
+#     """
 
-    >>> check_bst(five)
-    False
+#     >>> check_bst(five)
+#     False
 
-    >>> check_bst(nine)
-    True
+#     >>> check_bst(nine)
+#     True
 
-    >>> check_bst(fourteen)
-    False
+#     >>> check_bst(fourteen)
+#     False
 
-    >>> check_bst(twentyfour)
-    False
+#     >>> check_bst(twentyfour)
+#     False
 
-    >>> check_bst(None)
-    True
-   """
+#     >>> check_bst(None)
+#     True
+#    """
 
-    if root is None:
-        return True
+#     if root is None:
+#         return True
 
    
-    return min_ < root.val < max_ and check_bst(root.left, min_, root.val) and check_bst(root.right, root.val, max_)
+#     return min_ < root.val < max_ and check_bst(root.left, min_, root.val) and check_bst(root.right, root.val, max_)
 
-##################################################################################
+# ##################################################################################
 
 
 
