@@ -69,7 +69,7 @@ def sum_root_to_leaf(root, count=0):
     
 
     count = count * 10 + root.val
-    print count
+ 
 
     if root.left is None and root.right is None:
         return count
