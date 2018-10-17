@@ -18,6 +18,52 @@ class BT(object):
         self.right = right
 
 
+def left_side(root, exterior):
+    if root is None or root.left is None and root.right is None:
+        return 
+
+    exterior.append(root.val)
+    if root.left:
+        return left_side(root.left, exterior)
+    elif root.right:
+        return left_side(root.right, exterior)
+
+    
+def right_side(root, exterior):
+    if root is None or root.left is None and root.right is None:
+        return 
+
+    exterior.append(root.val)
+    if root.right:
+        return right_side(root.right, exterior)
+    elif root.left:
+        return right_side(root.left, exterior)
+   
+def leaves(root, exterior):
+    
+        if root is None:
+            return None
+
+        if root.left is None and root.right is None:
+            exterior.append(root.val)
+            return
+
+        leaves(root.left, exterior)
+        leaves(root.right, exterior)
+
+def compute_exterior(root):
+
+
+    if root is None:
+        return []
+
+    exterior = [root.val]
+    left_side(root.left, exterior)
+   
+    leaves(root.left, exterior)
+    leaves(root.right, exterior)
+    right_side(root.right, exterior)
+    return exterior
 
 
 if __name__ == '__main__':
@@ -31,7 +77,7 @@ if __name__ == '__main__':
     two = BT(2, four, five)
     three = BT(3, six)
     one = BT(1, two, three)
-    print find_exterior(one)
+    print compute_exterior(one)
 
 
 
