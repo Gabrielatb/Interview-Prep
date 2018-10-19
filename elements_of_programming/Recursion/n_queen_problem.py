@@ -41,7 +41,7 @@ def solveNQUtil(board, col):
         
         if isSafe(board, i, col): 
             # Place this queen in board[i][col] 
-            board[i][col] = 'Q'
+            board[i][col] = 1
   
             # recur to place rest of the queens 
             res = solveNQUtil(board, col+1) or res
