@@ -44,16 +44,15 @@ def maxProfit(prices):
 ############################################
 #Time Complexity O(n)
 #Space Complexity O(1)
-    max_profit = 0
-    min_price = float('inf')
-    
+def maxProfit(prices):
+    """
+    :type prices: List[int]
+    :rtype: int
+    """
+    min_price_so_far, max_profit = float('inf'), 0
     for price in prices:
-        if price < min_price:
-            min_price = price
-        elif price - min_price > max_profit:
-            max_profit = price - min_price 
-    
-            
-            
+        max_profit_sell_today = price- min_price_so_far
+        max_profit = max(max_profit, max_profit_sell_today)
+        min_price_so_far = min(price, min_price_so_far)
     return max_profit
 
