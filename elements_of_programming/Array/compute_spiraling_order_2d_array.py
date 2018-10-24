@@ -18,21 +18,39 @@
 #   [9,10,11,12]
 # ]
 # Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+# time: O(n)
+# space: O(n)
 
 def spiral_matrix(matrix):
-        return_lst = []
-        while matrix:
-            
-            #adding to return lst the first list
-           
-            return_lst += matrix[0]
-            
-            #rotating matrix to the left
-            matrix = zip(*matrix[1:])[::-1]
-            print matrix
-            
-        # print return_lst
-        return return_lst
+
+    while matrix:
+
+        for num in matrix[0]:
+            print num
+
+        #rotate matrix to the left
+        matrix = zip(*matrix[1:])[::-1]
 
 
-print spiral_matrix([[ 1, 2, 3 ],[ 4, 5, 6 ],[ 7, 8, 9 ]])
+print spiral_matrix([[1, 2, 3],[4, 5, 6],[7, 8, 9]])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
