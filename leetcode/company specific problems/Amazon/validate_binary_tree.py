@@ -36,6 +36,10 @@ class BT(object):
 #             return False
 #     return True
 
+
+
+# Time: O(n)
+# Space: O(1)
 def isValidBST(root, min_=float('-inf'), max_=float('inf')):
     """
     :type root: TreeNode
@@ -47,11 +51,6 @@ def isValidBST(root, min_=float('-inf'), max_=float('inf')):
 
 
     return min_ <= root.val <= max_ and isValidBST(root.left, min_, min(max_, root.val)) and isValidBST(root.right, max(min_, root.val), max_)
-
-
-#   2
-# / \
-# 1   3
 
 
 
