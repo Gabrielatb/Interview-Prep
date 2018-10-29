@@ -8,30 +8,66 @@
 
 # Input: nums = [1], k = 1
 # Output: [1]
-from collections import OrderedDict 
-import operator
+# from collections import OrderedDict 
+# import operator
 
 
 # key: number
 # value: count 
 #time: O(nlogn)
 #space: O(n)
-def k_most_frequent(nums, k):
+# def k_most_frequent(nums, k):
 
-    d = OrderedDict()
+#     d = OrderedDict()
+
+#     for num in nums:
+#         if num in d:
+#             d[num] +=1
+
+#         else:
+#             d[num] = 1
+
+#     sorted_dict = sorted(d.items(), key=operator.itemgetter(1))
+#     return_lst = []
+#     for item in sorted_dict[-k:]:
+#         return_lst.append(item[0])
+#     return return_lst
+
+
+from heapq import heappush, heappop
+
+#time O(klogd)
+#O(d)
+
+def k_most_frequent(nums, k):
+    freq_nums_dict = {}
 
     for num in nums:
-        if num in d:
-            d[num] +=1
+        print num
+        freq_nums_dict[num] = freq_nums_dict.get(num, 0) + 1
 
-        else:
-            d[num] = 1
+    heap = []
+    for key in freq_nums_dict:
+        heappush(heap, (freq_nums_dict[key], key))
 
-    sorted_dict = sorted(d.items(), key=operator.itemgetter(1))
-    return_lst = []
-    for item in sorted_dict[-k:]:
-        return_lst.append(item[0])
-    return return_lst
+    while len(heap) > k:
+        heappop(heap)
+
+    result = []
+    for elem in heap:
+        result.append(elem[1])
+
+    return result
+
+
+
+
+
+
+
+
+
+
 
 
 nums = [1,1,1,2,2,3]
