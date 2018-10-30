@@ -16,7 +16,8 @@
 # Note: The length of path between two nodes is represented
 # by the number of edges between them.
 
-
+# Time: O(n)
+# Space: O(h)
 class Solution(object):
     def __init__(self):
         self.max = 0
@@ -48,3 +49,5 @@ class Solution(object):
         
         helper(root)
         return self.max
+
+
