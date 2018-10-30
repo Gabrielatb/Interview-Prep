@@ -15,7 +15,7 @@ class LinkedList(object):
         self.head = None
         self.tail = None
 
-    def append_end(self, data):
+    def append(self, data):
         node = Node(data)
 
         if self.head is None:
@@ -26,6 +26,7 @@ class LinkedList(object):
             while current.next is not None:
                 current = current.next
             current.next = node
+        self.tail = node
 
 
     def append_beg(self, data):
