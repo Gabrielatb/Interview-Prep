@@ -7,10 +7,38 @@
 # n = 2 ---> {'(())', '()()'}
 # n = 3 ---> {'((()))', '(()),()', '()()()', '()(())', '(()())'}
 
+# left_needed|| right_needed || valid_prefix || result||
+#___________________________________________________
+# 3                  3              ''              []
+
+# 2                    3              '('           []
+
+# 1                    3              '(('           []
+
+# XX0                    3              '((()'          []
+
+# XX0                    2              '((()))'          []
+
+# XX0                    1              '((()))'          []
+# XX0                    0              '((()))'          ['((()))' ,]
+
+# 1                    2              '(()'           ['((()))' ,]
+
+# 0                    2              '(()('           ['((()))' ,]
+
+
+
+
+
 
 def match_parens(n):
     def helper(left_needed, right_needed, valid_prefix, result=[]):
+        print 'left_needed ', left_needed
+        print 'right_needed ', right_needed
+        print ' result ', result
         print valid_prefix
+        print '*************************************************'
+
         if left_needed > 0:
             #need to insert '('
                 helper(left_needed-1, right_needed, valid_prefix + '(')
