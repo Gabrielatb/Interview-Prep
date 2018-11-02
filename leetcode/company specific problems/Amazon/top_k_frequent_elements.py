@@ -34,42 +34,50 @@
 #     return return_lst
 
 
-from heapq import heappush, heappop
+# from heapq import heappush, heappop
 
-#time O(nlogk)
-#O(k)
+# heapify in python is O(n)
+# heappop for each k O(logn)
+# n+ klogn(n)
+# space O(n)
+# def k_most_frequent(nums, k):
+#     freq_nums_dict = {}
 
-def k_most_frequent(nums, k):
-    freq_nums_dict = {}
+#     for num in nums:
+#         print num
+#         freq_nums_dict[num] = freq_nums_dict.get(num, 0) + 1
 
-    for num in nums:
-        print num
-        freq_nums_dict[num] = freq_nums_dict.get(num, 0) + 1
+#     heap = []
+#     for key in freq_nums_dict:
+#         heappush(heap, (freq_nums_dict[key], key))
 
-    heap = []
-    for key in freq_nums_dict:
-        heappush(heap, (freq_nums_dict[key], key))
+#     while len(heap) > k:
+#         heappop(heap)
 
-    while len(heap) > k:
-        heappop(heap)
+#     result = []
+#     for elem in heap:
+#         result.append(elem[1])
 
-    result = []
-    for elem in heap:
-        result.append(elem[1])
-
-    return result
-
-
-
+#     return result
 
 
 
+import collections
+words = ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"]
+count = collections.Counter(words)
+print count 
 
 
 
 
 
 
-nums = [1,1,1,2,2,3]
-k = 2
-print k_most_frequent(nums, k)
+
+
+
+
+
+
+# nums = [1,1,1,2,2,3]
+# k = 2
+# print k_most_frequent(nums, k)
