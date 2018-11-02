@@ -30,12 +30,9 @@
 
 
 
-
+#space O(n)
 def match_parens(n):
     def helper(left_needed, right_needed, valid_prefix, result=[]):
-        print 'left_needed ', left_needed
-        print 'right_needed ', right_needed
-        print ' result ', result
         print valid_prefix
         print '*************************************************'
 

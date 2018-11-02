@@ -5,20 +5,23 @@
 # assuming that a person can only work on a single activity at a time.
 
 
+#  Time: O(nlogn)
+# # Space: O(1)
 
-# Time: O(nlogn)
-# Space: O(1)
 
-def max_activities(s, f):
-    f,s = zip(*sorted(zip(f,s)))
-    #tuples
 
+def activity_selection(start, finish):
+
+    #[ (10, 20), (12, 25),(20, 30)]
+
+    start, finish = zip(*sorted(zip(finish, start)))
+    
     count = 1
-    indx = 0
-    for start in range(len(s)):
-        if s[start] >= f[indx]:
-            indx = start
+    f = 0
+    for s in range(1, len(start)):
+        if start[s] >= finish[f]:
             count +=1
+            f = start
     return count
 
 
@@ -26,25 +29,16 @@ def max_activities(s, f):
 
 
 
-s = [20, 12, 10]
+
+
+
+s = [20, 30, 10]
 f = [30, 25, 20]
 
 
 # s = [1 , 3 , 0 , 5 , 8 , 5]
 # f = [2 , 4 , 6 , 7 , 9 , 9] 
-print max_activities(s,f)
-
-
-
-
-
-
-
-
-
-
-
-
+print activity_selection(s,f)
 
 
 

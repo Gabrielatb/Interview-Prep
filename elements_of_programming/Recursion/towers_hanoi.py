@@ -1,11 +1,9 @@
 
 
 # Recursive Python function to solve tower of hanoi 
-  
 
-
-#Time Complexity: O(2**n) 
-#Space Complexity: O(1)
+# Time Complexity: O(2**n) 
+# Space Complexity: O(1)
 
 def TowerOfHanoi(n , from_rod, to_rod, aux_rod): 
 

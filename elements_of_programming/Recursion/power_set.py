@@ -13,8 +13,9 @@
 #   []
 # ]
 
-#Time Complexity O(n2**n)
-#Space Complexity O(n2**n)
+
+# #Time Complexity O(2**n)
+# #Space Complexity O(2**n)
 def generate_power_set(nums):
 
     def directed_power_set(to_be_selected, subset):
