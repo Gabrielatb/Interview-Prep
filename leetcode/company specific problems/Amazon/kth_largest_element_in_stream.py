@@ -25,9 +25,11 @@ class KthLargest(object):
         """
 
 
-        heapq.heappush(self.heap, val)
-        heapq.heapify(self.heap)
-        heapq.heappop(self.heap)
+        if len(self.heap) < self.k:
+            heapq.heappush(self.heap, val)
+
+        elif val > self.heap[0]:
+            heapq.heapreaplace(self.heap, val)
 
         return self.heap[0]
 

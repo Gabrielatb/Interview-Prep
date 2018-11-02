@@ -36,8 +36,8 @@
 
 from heapq import heappush, heappop
 
-#time O(klogd)
-#O(d)
+#time O(nlogk)
+#O(k)
 
 def k_most_frequent(nums, k):
     freq_nums_dict = {}
