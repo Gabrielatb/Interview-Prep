@@ -1,8 +1,8 @@
-from heapq import heappush, heappop, heapify, heapreplace
+import heapq 
 
+class KthLargest(object):
 # Time: O(nlogk)
 # Space: O(k)
-class KthLargest(object):
 
     def __init__(self, k, nums):
         """
@@ -14,16 +14,24 @@ class KthLargest(object):
         heapq.heapify(self.heap)
         while len(self.heap) > k:
             heapq.heappop(self.heap)
-        
+
+        # temp = heapified_nums[-3:]
+        # self.nums = temp
+        # print self.nums
     def add(self, val):
         """
         :type val: int
         :rtype: int
         """
-        
-        if len(self.heap) < self.k:
-            heapq.heappush(self.heap, val)
-        elif val > self.heap[0]:
-            heapq.heapreplace(self.heap,val)
+
+
+        heapq.heappush(self.heap, val)
+        heapq.heapify(self.heap)
+        heapq.heappop(self.heap)
 
         return self.heap[0]
+
+if __name__ == '__main__':
+    lst = KthLargest(3, [4, 5, 8, 2])
+    print lst.add(100)
+
