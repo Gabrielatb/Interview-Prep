@@ -21,7 +21,7 @@ def activity_selection(start, finish):
     for s in range(1, len(start)):
         if start[s] >= finish[f]:
             count +=1
-            f = start
+            f = s
     return count
 
 

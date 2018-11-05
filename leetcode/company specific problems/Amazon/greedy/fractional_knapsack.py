@@ -11,21 +11,53 @@
 # Space: O(1)
 
 def knapsack(lst, W):
+ 
     lst.sort(key=lambda x:x[0], reverse=True)
+
     
-    value = 0
-    for item in lst:
-        if W - item[1] == 0:
-            value += item[0]
-            break
-        elif item[1] <= W:
-            W -= item[1]
-            value += item[0]
-    return value
+    val = 0
+    for tup in lst:
+        if tup[1] <= W:
+            val += tup[0]
+             W -= tup[1]
+        else:
+            return val
+    return val
+
+
+print knapsack([[60, 10], [100, 20], [120, 30]], 50)
 
 
 
-print knapsack([[60, 10], [100, 30], [120, 30]], 50)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

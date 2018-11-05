@@ -2,6 +2,7 @@
 
 import collections
 
+
 class WordDictionary(object):
     def __init__(self):
         self.len_to_words = collections.defaultdict(set)
