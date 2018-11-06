@@ -1,18 +1,14 @@
-# Add and Search Word - Data structure design
-
-#Time complexity: O(M), M is max string length
-#cons, are it stores a lot of memory, for storing string and each 
-#node has several pointers, equal to number of char in alphabet
-
 class TrieNode(object):
-    def __init__(self):
+    def __init__(self, word=''):
         self.children = [None] * 26
         self.is_end_node = False
+        self.word = word
 
 
 class Trie(object):
     def __init__(self):
         self.root = TrieNode()
+
 
     def char_to_indx(self, char):
         """A returns a char indx """
@@ -29,7 +25,7 @@ class Trie(object):
             char = key[indx]
             alphabet_indx = self.char_to_indx(char)
             if curr.children[alphabet_indx] == None:
-                curr.children[alphabet_indx] = TrieNode()
+                curr.children[alphabet_indx] = TrieNode(key)
 
             curr = curr.children[alphabet_indx]
 
@@ -52,32 +48,33 @@ class Trie(object):
         return curr != None and curr.is_end_node
 
 
-     
 
-def main(): 
-  
-    # Input keys (use only 'a' through 'z' and lower case) 
-    keys = ["the","a","there","anaswe","any", 
-            "by","their"] 
-    output = ["Not present in trie", 
-              "Present in tire"] 
-  
-    # Trie object 
+    def longestWord(self):
+
+        curr = self.root
+        stack = [x for x in curr.children if x is not None]
+        result = ''
+        while stack:
+            print stack
+            node = stack.pop()
+            if node.is_end_node:
+                if len(result) < len(node.word) or  len(result) == len(node.word) and result > node.word:
+                    result = node.word
+                stack.extend([x for x in node.children if x is not None])
+
+        return result
+
+if __name__ == '__main__':
     t = Trie() 
   
+    # word = ["a", "banana", "app", "appl", "ap", "apply", "apple"]
+    word = ["w","wo","wor","worl", "world"]
     # Construct trie 
-    for key in keys: 
-        t.insert(key) 
+    for w in word: 
+        t.insert(w) 
 
-  
-    # # Search for different keys 
-    print("{} ---- {}".format("the",output[t.search("the")])) 
-    print("{} ---- {}".format("these",output[t.search("these")])) 
-    print("{} ---- {}".format("their",output[t.search("their")])) 
-    print("{} ---- {}".format("thaw",output[t.search("thaw")])) 
-  
-if __name__ == '__main__': 
-    main() 
+    print t.longestWord()
+
 
 
 

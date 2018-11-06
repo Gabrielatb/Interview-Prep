@@ -24,17 +24,33 @@
 # appears in the array
 
 
-def least_interval(taks, n):
-    table = {} 
-    for task in tasks:
-        table[task] = table.get(task, 0) + 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def least_interval(taks, n):
+#     table = {} 
+#     for task in tasks:
+#         table[task] = table.get(task, 0) + 1
     
-    idles = 0
-    while table:
-        length = len(table)
+#     idles = 0
+#     while table:
+#         length = len(table)
         
 
 
-tasks = ["A","A","A","B","B","B"]
-n = 2
-print least_interval(tasks, n)
+# tasks = ["A","A","A","B","B","B"]
+# n = 2
+# print least_interval(tasks, n)

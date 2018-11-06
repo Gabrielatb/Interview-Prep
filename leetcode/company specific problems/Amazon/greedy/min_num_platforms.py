@@ -9,3 +9,27 @@
 # There are at-most three trains at a time (time between 11:00 to 11:20)
 
 
+def min_number_platform(arr, dep):
+    #sort lists by arrival time
+    sorted_tuple_by_start_time = zip(*sorted(zip(arr, dep)))
+    
+    depart_indx = 0
+    count = 1
+    max_count = 0
+
+    for start_indx in range(1, len(arr)):
+        if arr[start_indx] < dep[depart_indx]:
+            count +=1
+            depart_indx = start_indx
+
+        else:
+            max_count = max(max_count, count)
+            count = 0
+        start_indx +=1
+
+    max_count = max(max_count, count)
+    return max_count
+
+
+
+print min_number_platform([940, 950,  1100, 1500, 1800, 900],[1200, 1120, 1130, 1900, 2000,910])

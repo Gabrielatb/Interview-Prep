@@ -8,16 +8,31 @@
 
 
 
+def job_sequencing(jobs):
+
+    jobs.sort(key=lambda x: x[2], reverse=True)
+    key_holder_lst = [0] * len(jobs)
+
+    for single_job in jobs:
+        indx = single_job[1]-1
+        while indx >= 0:
+            if key_holder_lst[indx] == 0:
+                key_holder_lst[indx] = single_job[0]
+                break
+            else:
+                indx -=1
+
+    return_lst = [x for x in key_holder_lst if x != 0]
+    return return_lst
 
 
+       
+arr = [['a', 4, 20], 
+       ['b', 1, 10],
+       ['c', 1, 40], 
+       ['d', 1, 30]]
 
-
-
-
-
-
-
-
+print job_sequencing(arr)
 
 
 

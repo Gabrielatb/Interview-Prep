@@ -12,16 +12,14 @@
 
 def activity_selection(start, finish):
 
-    #[ (10, 20), (12, 25),(20, 30)]
+    f, s = zip(*sorted(zip(finish, start)))
 
-    start, finish = zip(*sorted(zip(finish, start)))
-    
+    finish_time = 0
     count = 1
-    f = 0
-    for s in range(1, len(start)):
-        if start[s] >= finish[f]:
-            count +=1
-            f = s
+    for start_time in range(1, len(s)):
+        if f[finish_time] <= s[start_time]:
+            count += 1
+            finish_time = start_time
     return count
 
 
@@ -29,16 +27,46 @@ def activity_selection(start, finish):
 
 
 
+# s = [20, 12, 10]
+# f = [30, 25, 20]
 
 
-
-s = [20, 30, 10]
-f = [30, 25, 20]
-
-
-# s = [1 , 3 , 0 , 5 , 8 , 5]
-# f = [2 , 4 , 6 , 7 , 9 , 9] 
+s = [1 , 3 , 0 , 5 , 8 , 5]
+f = [2 , 4 , 6 , 7 , 9 , 9] 
 print activity_selection(s,f)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[ (10, 20), (12, 25),(20, 30)]
+
+    # start, finish = zip(*sorted(zip(finish, start)))
+    
+    # count = 1
+    # f = 0
+    # for s in range(1, len(start)):
+    #     if start[s] >= finish[f]:
+    #         count +=1
+    #         f = s
+    # return count
 
 
 

@@ -1,13 +1,16 @@
-# Add and Search Word - Data structure design
+# Given a non-empty list of words, return the k most frequent elements.
 
-#Time complexity: O(M), M is max string length
-#cons, are it stores a lot of memory, for storing string and each 
-#node has several pointers, equal to number of char in alphabet
+# Your answer should be sorted by frequency from highest to lowest.
+# If two words have the same frequency, then the word with the lower
+# alphabetical order comes first.
+
+
 
 class TrieNode(object):
     def __init__(self):
         self.children = [None] * 26
         self.is_end_node = False
+        self.frequency = 0
 
 
 class Trie(object):
@@ -51,33 +54,28 @@ class Trie(object):
 
         return curr != None and curr.is_end_node
 
+    def topKFrequent(self, words, k):
+        return_lst = [None] * k
+
+        curr = self.root
+        
+        for key in keys:
+            if self.search(key):
+                curr.frequency +=1
+
+            else:
+                self.insert(key) 
+
+
+
+
 
      
+if __name__ == '__main__':
 
-def main(): 
   
     # Input keys (use only 'a' through 'z' and lower case) 
-    keys = ["the","a","there","anaswe","any", 
-            "by","their"] 
-    output = ["Not present in trie", 
-              "Present in tire"] 
-  
-    # Trie object 
-    t = Trie() 
-  
-    # Construct trie 
-    for key in keys: 
-        t.insert(key) 
-
-  
-    # # Search for different keys 
-    print("{} ---- {}".format("the",output[t.search("the")])) 
-    print("{} ---- {}".format("these",output[t.search("these")])) 
-    print("{} ---- {}".format("their",output[t.search("their")])) 
-    print("{} ---- {}".format("thaw",output[t.search("thaw")])) 
-  
-if __name__ == '__main__': 
-    main() 
-
+    keys = ["i", "love", "leetcode", "i", "love", "coding"]
+    k = 2
 
 
