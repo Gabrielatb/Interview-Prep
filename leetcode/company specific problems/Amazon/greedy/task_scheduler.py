@@ -24,6 +24,47 @@
 # appears in the array
 
 
+import heapq
+import collections
+
+
+def least_interval(tasks, n):
+
+    if n == 0:
+        return len(tasks)
+
+    dictionary_count = collections.defaultdict(int)
+
+    for task in tasks:
+        dictionary_count[task] += 1
+
+
+    total_count = 0
+    cycle = n + 1
+
+    #max heap
+    heap = []
+    for val in dictionary_count.values():
+        if val > 0:
+            heapq.heappush(heap, (-val))
+
+
+    while heap:
+        worktime=0
+        temp = []
+        for i in range(cycle):
+            if heap:
+                temp.append(heapq.heappop(heap))
+                worktime +=1
+
+        for count in temp:
+            count *= -1
+            count -=1
+            if count > 0:
+                heapq.heappush(heap, (-count))
+        
+        total_count += cycle if len(heap) > 0 else worktime
+    return total_count
 
 
 
@@ -31,6 +72,9 @@
 
 
 
+tasks = ["A", "A", "A", "B", "B", "B"]
+n = 2
+print least_interval(tasks, 2)
 
 
 
