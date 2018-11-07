@@ -36,6 +36,51 @@ class LinkedList(object):
 #quick sort
 #Time Complexity: O(nlogn)
 #Space Complexity: ()
+    def find_mid(self, head):
+        slow = head
+        fast = head
+        while fast and fast.next and fast.next.next:
+            fast = fast.next.next
+            slow = slow.next
+        return slow
+
+    def merge(self, l, r):
+        dummy = dummy_head = Node(0)
+
+        while l and r:
+            if l.val < r.val:
+                dummy.next = l
+                l = l.next
+            else:
+                dummy.next = r
+                r = r.next
+            dummy = dummy.next
+
+        if l:
+            dummy.next = l
+        if r:
+            dummy.next = r
+
+        return dummy_head.next
+
+    def merge_sort(self, head):
+
+        if head is None or head.next is None:
+            return head
+
+        mid = self.find_mid(head)
+        right = mid.next
+        mid.next = None
+        left = head
+        
+        l = self.merge_sort(left)
+        r = self.merge_sort(right)
+        return self.merge(l, r)
+
+
+
+
+
 
 
 
@@ -46,4 +91,7 @@ if __name__ == '__main__':
     ll.append(2)
     ll.append(1)
 
-    quicksort(ll.head)
+    new_head = ll.merge_sort(ll.head)
+    ll1 = LinkedList()
+    ll1.head = new_head
+    print ll1.print_list()

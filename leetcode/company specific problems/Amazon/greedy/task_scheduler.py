@@ -27,7 +27,8 @@
 import heapq
 import collections
 
-
+#Time O(n), n being total count
+#space O(1), list is constant
 def least_interval(tasks, n):
 
     if n == 0:
