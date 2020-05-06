@@ -46,7 +46,7 @@
 # Solution #3: Pythonic Rearrangemen
 ########################
 # Time: O(n)
-# Space: O(1)
+# Space: O(n)
 def rearrange(lst):
     return [elem for elem in lst if elem < 0] + [elem for elem in lst if elem >= 0]
 
