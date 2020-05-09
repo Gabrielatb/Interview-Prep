@@ -17,15 +17,15 @@
 ###################################
 # Time: O(n)
 # Space: O(n)
-# def maxMin(lst):
-#     half_len_lst = len(lst) // 2
-#     return_lst = []
-#     for indx in range(half_len_lst):
-#         return_lst.append(lst[-(indx + 1)])
-#         return_lst.append(lst[indx])
-#     if len(lst) % 2 != 0:
-#         return_lst.append(lst[half_len_lst])
-#     return return_lst
+def maxMin(lst):
+    half_len_lst = len(lst) // 2
+    return_lst = []
+    for indx in range(half_len_lst):
+        return_lst.append(lst[-(indx + 1)])
+        return_lst.append(lst[indx])
+    if len(lst) % 2 != 0:
+        return_lst.append(lst[half_len_lst])
+    return return_lst
 
 ###################################
 # Using O(1)O(1) Extra Space 
