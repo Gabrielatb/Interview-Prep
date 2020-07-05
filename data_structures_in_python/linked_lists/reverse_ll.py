@@ -39,6 +39,7 @@ class LinkedList:
         print('')
         return True
 
+    # O(n)
     def reverse(self):
         if self.head == None:
             print("Empty List!")
